@@ -4,12 +4,17 @@ function localprint(e){
     e.preventDefault();
     let namevalue=e.target.username.value;
     let emailvalue=e.target.email.value;
-    localStorage.setItem('Name',namevalue);
-    localStorage.setItem('Email',emailvalue);
+    //localStorage.setItem('Name',namevalue);
+    //localStorage.setItem('Email',emailvalue);
     let obj={
         namevalue,
         emailvalue
     };
-    localStorage.setItem('userDetails', JSON.stringify(obj));
+    localStorage.setItem(obj.emailvalue, JSON.stringify(obj));
+    printDetailsOnScreen(obj);
+}
+function printDetailsOnScreen(det){
+    let parentNode= document.getElementById('users');
+    parentNode.innerHTML=parentNode.innerHTML + `<li>${det.namevalue}  -  ${det.emailvalue}</li>`;
 }
 
