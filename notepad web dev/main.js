@@ -6,4 +6,10 @@ function localprint(e){
     let emailvalue=e.target.email.value;
     localStorage.setItem('Name',namevalue);
     localStorage.setItem('Email',emailvalue);
+    let obj={
+        namevalue,
+        emailvalue
+    };
+    localStorage.setItem('userDetails', JSON.stringify(obj));
 }
+
