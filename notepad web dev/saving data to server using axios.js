@@ -21,15 +21,13 @@ function localprint(e){
     //printDetailsOnScreen(obj);
 }
 window.addEventListener("DOMContentLoaded", ()=>{
-    const localStorageObj = localStorage;
-    const localStoragekeys = Object.keys(localStorageObj)
-
-    for(var i=0; i<localStoragekeys.length;i++){
-        const key = localStoragekeys[i];
-        const userDetailsString=localStorageObj[key];
-        const userDetailsObj=JSON.parse(userDetailsString);
-        printDetailsOnScreen(userDetailsObj);
+   axios.get("https://crudcrud.com/api/ad65e080ba8c4f1fa9cb469b71f1d978/appointmentData")
+   .then((response)=> {
+    for(var i=0; i<response.data.length;i++){
+        printDetailsOnScreen(response.data[i]);
     }
+   })
+   .catch((err)=> console.log(err));
 })
 function printDetailsOnScreen(det){
     let parentNode= document.getElementById('users');
