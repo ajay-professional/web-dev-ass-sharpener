@@ -28,18 +28,25 @@ window.addEventListener("DOMContentLoaded", ()=>{
     }
    })
    .catch((err)=> console.log(err));
-})
+});
 function printDetailsOnScreen(det){
     let parentNode= document.getElementById('users');
-    parentNode.innerHTML=parentNode.innerHTML + `<li id=${det.emailvalue}>${det.namevalue}  -  ${det.emailvalue}<button onclick=editUser('${det.emailvalue},${det.namevalue}')>Edit</button><button onclick=deleteUser('${det.emailvalue}')>Delete User</button></li>`;
+    parentNode.innerHTML=parentNode.innerHTML + `<li id=${det._id}>${det.namevalue}  -  ${det.emailvalue}<button onclick=editUser('${det.emailvalue},${det.namevalue}')>Edit</button><button onClick=deleteUser('${det._id}')>Delete User</button></li>`;
+    console.log(det);
 }
+
 function editUser(emailvalue, namevalue){
     document.getElementById('name').value=namevalue;
     document.getElementById('email').value=emailvalue;
     deleteUser(em);
 }
 function deleteUser(em){
-    localStorage.removeItem(em);
+    axios.delete(`https://crudcrud.com/api/ad65e080ba8c4f1fa9cb469b71f1d978/appointmentData/${em}`).then((response)=>{
+        console.log("Successful"+response);
+        }).catch((err)=> {
+            document.body.innerHTML=  document.body.innerHTML + "<h4>Something went wrong.</h4>";
+            console.log(err)});
+    /*localStorage.removeItem(em);*/
     removeUserFromScreen(em);
 }
 function removeUserFromScreen(em){
