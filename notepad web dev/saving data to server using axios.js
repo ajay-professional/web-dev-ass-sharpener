@@ -31,12 +31,18 @@ window.addEventListener("DOMContentLoaded", ()=>{
 });
 function printDetailsOnScreen(det){
     let parentNode= document.getElementById('users');
-    parentNode.innerHTML=parentNode.innerHTML + `<li id=${det._id}>${det.namevalue}  -  ${det.emailvalue}<button onclick=editUser('${det.emailvalue},${det.namevalue}')>Edit</button><button onClick=deleteUser('${det._id}')>Delete User</button></li>`;
+    parentNode.innerHTML=parentNode.innerHTML + `<li id=${det._id}>${det.namevalue}  -  ${det.emailvalue}<button onclick=editUser('${det.emailvalue}','${det.namevalue}','${det._id}')>Edit</button><button onClick=deleteUser('${det._id}')>Delete User</button></li>`;
     console.log(det);
 }
 
-function editUser(emailvalue, namevalue){
-    document.getElementById('name').value=namevalue;
+function editUser(emailvalue, namevalue, em){
+    /*axios.put(`https://crudcrud.com/api/ad65e080ba8c4f1fa9cb469b71f1d978/appointmentData/${em}`)
+    .then(()=>{
+        document.getElementById('name').value=namevalue;
+        document.getElementById('email').value=emailvalue;
+        deleteUser(em);
+    }).catch((err)=> console.log(err));*/
+    document.getElementById('username').value=namevalue;
     document.getElementById('email').value=emailvalue;
     deleteUser(em);
 }
