@@ -2,27 +2,47 @@
 <html>
 <head>
     <title>Expense tracker</title>
+    <style>
+        form{
+            background-color: rgb(236, 226, 226);
+        }
+    </style>
 </head>
 <body>
     <form id="myform">
-        <label for="number">Choose expense amount:</label>
-        <input type="number" id="number" name="expenseamount" required>
-        <label for="text">Choose description:</label>
-        <input type="text" id="text" name="description" required>
-        <label for="list">Choose a category:</label>
-        <input id="list" list="category" name="catdetails" required>
-        <datalist id="category">
-            <option value="fuel">
-            <option value="food">
-            <option value="electricity">
-            <option value="movie">
-            <option value="parking">
-            <option value="shopping"></option>
-        </datalist>
-        <button id="expense">Add Expenses</button>
-        <!--<input type="button" id="btn-expenses" value="Add Expenses">-->
-        <div id="div-id" class="div-class"></div>
+        <fieldset>
+            <legend>Easy to use expenses tracker:</legend>
+            <label for="number">Choose expense amount:</label>
+            <input title="Enter amount spent" type="number" id="number" name="expenseamount" placeholder="1000" autofocus required><br/>
+            <label for="text">Choose description:</label>
+            <input  title="enter description of item/service" type="text" id="text" name="description" placeholder="burger..."required><br/>
+            <label for="list">Choose a category:</label>
+            <input  title="category of item/service"  id="list" list="category" name="catdetails" required><br/>
+            <datalist id="category">
+                <option value="fuel">
+                <option value="food">
+                <option value="electricity">
+                <option value="movie">
+                <option value="parking">
+                <option value="shopping"></option>
+                <option>services</option>
+            </datalist>
+            <button id="expense">Add Expenses</button>
+            <button title="clear all values" id="reset" onclick="clearDetails()">Reset</button>
+            <!--<input type="button" id="btn-expenses" value="Add Expenses">-->
+            <p>Details:-</p>
+            <div id="div-id" class="div-class"></div>
+        </fieldset>
     </form>
-    <script src="project1js.js"></script>
+    <img src="https://silversoft.co.za/wp-content/uploads/2017/01/expense-tracking-850x476.jpg" width="1260" height="220" style="text-align:left;">
+    <cite>Expenses shown in the image</cite>
+    <br/>
+    <hr/>
+    <address>
+        Reach out to developer at <ins>ajaykumarx19@gmail.com</ins><br/>
+        Developer name: Ajay Kumar<br/>
+    </address>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.0.0-alpha.1/axios.min.js"></script>
+    <script src="project1integrating rest api.js"></script>
 </body>
 </html>
