@@ -10,8 +10,10 @@
         }
 
         .cal {
-            border-radius: 4px;
+            border-radius: 9px;
+            border-color: rgb(176, 196, 222);
             width: 40px;
+            font-size: 30px;
         }
 
         nav {
@@ -20,6 +22,12 @@
             font-size: 30px;
             color: rgb(48, 48, 48);
 
+        }
+
+        fieldset {
+            border-radius: 12px;
+            width: 600px;
+            height: max-content;
         }
 
         div {
@@ -32,10 +40,20 @@
         .pad {
             font-size: 30px;
             width: 80px;
+            border-radius: 9px;
+            border-color: rgb(176, 196, 222);
+        }
+        input{
+            width: 240px;
+            height:20px;
+            border-radius: 9px;
+            border-color: rgb(176, 196, 222);
         }
 
         .ans-cal {
-            border-radius: 4px;
+            border-radius: 9px;
+            border-color: rgb(176, 196, 222);
+            font-size: 22px;
         }
 
         #backspace {
@@ -59,46 +77,45 @@
     <hr style="border:0px">
     <div>
         <fieldset>
-            <legend>Easy to use:</legend>
             <div id="bat">
-                <label for="one">Input First value:-</label>
-                <input id="one" type="text" name="onevalue" autofocus required><br>
+                <!--<label for="one">Input First value:-</label>-->
+                <input id="one" type="text" title="input First value" name="onevalue" autofocus required readonly><br>
                 <hr style="border:0px">
-                <label for="two">Input Second value:-</label>
-                <input id="two" type="text" name="twovalue" required><br>
+                <!--<label for="two">Input Second value:-</label>-->
+                <input id="two" type="text"  title="input Second value" name="twovalue" required readonly><br>
                 <hr style="border:0px">
                 <hr style="border:0px">
-                <button id="ek" class="pad">1</button>
-                <button id="do" class="pad">2</button>
-                <button id="three" class="pad">3</button><br>
-                <button id="four" class="pad">4</button>
-                <button id="five" class="pad">5</button>
-                <button id="six" class="pad">6</button><br>
                 <button id="seven" class="pad">7</button>
                 <button id="eight" class="pad">8</button>
                 <button id="nine" class="pad">9</button><br>
-                <button id="zero" class="pad">0</button>
+                <button id="four" class="pad">4</button>
+                <button id="five" class="pad">5</button>
+                <button id="six" class="pad">6</button><br>
+                <button id="ek" class="pad">1</button>
+                <button id="do" class="pad">2</button>
+                <button id="three" class="pad">3</button><br>
                 <button id="dec" class="pad">.</button>
-                <button id="enter" style="font-size:30px;" class="pad">Enter</button><br>
-                <button id="backspace">Back-Space</button>
+                <button id="zero" class="pad">0</button>
+                <button id="enter" style="font-size:30px;" class="pad"><small>Enter</small></button><br>
+                <button id="backspace" class="pad"><small><small>Delete</small></small></button>
                 <br>
                 <br>
                 <br>
                 <button id="plus" class="cal" class="pad">+</button>
                 <button id="minus" class="cal" class="pad">-</button>
-                <button id="multiply" class="cal" class="pad">*</button>
+                <button id="multiply" class="cal" class="pad">x</button>
                 <button id="divide" class="cal" class="pad">/</button>
-                <button id="power" class="cal" class="pad">x<sup>y</sup></button>
-                <button id="root" class="cal" class="pad">root</button>
+                <button id="power" class="cal" class="pad"><small>x<sup>y</sup></small></button>
+                <button title="square root" id="root" class="cal" class="pad"><small><small><small>root</small></small></small></button>
                 <br>
                 <hr style="border:0px">
                 <hr style="border:0px">
                 <hr style="border:0px">
                 <hr style="border-style:dotted;">
                 <label style="font-size:large;"><b>Answer:</b></label>
-                <input id="ans" type="text" name="ans" style="width:150px;height: 30px;">
-                <button id="reset" class="ans-cal">Clear</button>
-                <button id="move" class="ans-cal">Move Ahead</button>
+                <input id="ans" type="text" name="ans" style="width:160px;height:25px;" readonly>
+                <button id="reset" title="clear all" class="ans-cal">AC</button>
+                <button id="move" class="ans-cal"><small>Move Ahead</small></button>
             </div>
             <script>
                 let count = 0;

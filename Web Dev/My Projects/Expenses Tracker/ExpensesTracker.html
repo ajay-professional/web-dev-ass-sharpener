@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Expense tracker</title>
+    <style>
+        form {
+            background-color: rgb(236, 226, 226);
+            background-image: url('https://thumbs.dreamstime.com/z/personal-expenses-concept-background-information-financial-analysis-bunch-banknotes-dollars-house-white-m-money-finance-tax-195359547.jpg');
+
+        }
+    </style>
+</head>
+
+<body>
+    <form id="myform">
+        <fieldset>
+            <legend><b>Easy to use expenses tracker:</b></legend>
+            <label for="number">Choose expense amount:</label>
+            <input title="Enter amount spent" type="number" id="number" name="expenseamount" placeholder="1000"
+                autofocus required><br />
+            <label for="text">Choose description:</label>
+            <input title="enter description of item/service" type="text" id="text" name="description"
+                placeholder="burger..." required><br />
+            <label for="list">Choose a category:</label>
+            <input title="category of item/service" id="list" list="category" name="catdetails" required><br />
+            <datalist id="category">
+                <option value="fuel">
+                <option value="food">
+                <option value="electricity">
+                <option value="movie">
+                <option value="parking">
+                <option value="shopping"></option>
+                <option>services</option>
+            </datalist>
+            <!--<button id="expense">Add Expenses</button>-->
+            <input type="submit" id="btn" name="Add expenses" value="Add Expenses">
+            <button title="clear all values" id="reset" onclick="clearDetails()">Reset</button>
+            <!--<input type="button" id="btn-expenses" value="Add Expenses">-->
+            <p>Details:-</p>
+            <ol>
+                <div id="div-id" class="div-class"></div>
+            </ol>
+        </fieldset>
+    </form>
+    <img src="https://silversoft.co.za/wp-content/uploads/2017/01/expense-tracking-850x476.jpg" alt="expenses image"
+        width="1260" height="220" style="text-align:left;">
+    <cite>Expenses shown in the image</cite>
+    <br />
+    <hr />
+    <address>
+        Reach out to developer at <ins>ajaykumarx19@gmail.com</ins><br />
+        Developer name: Ajay Kumar<br />
+    </address>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.0.0-alpha.1/axios.min.js"></script>
+    <script src="project1 with async await.js"></script>
+</body>
+
+</html>

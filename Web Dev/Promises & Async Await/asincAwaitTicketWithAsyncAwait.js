@@ -4,6 +4,7 @@ const preMovie= async()=>{
     console.log('person3: My wife is in midway and coming with tickets');
     const promiseWifeBringingTickets=new Promise((resolve,reject)=>{
         setTimeout(()=>{
+            console.log('Hi');
             resolve('ticket');
         },3000);
     });

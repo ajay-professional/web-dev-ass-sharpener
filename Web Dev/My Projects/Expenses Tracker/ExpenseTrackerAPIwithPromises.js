@@ -5,7 +5,8 @@ forms.addEventListener('submit', (e)=>{
     let description_value=e.target.description.value;
     let category_value=e.target.catdetails.value;
     let obj={expensevalue,description_value,category_value};
-    axios.post("https://crudcrud.com/api/66b9a6b5c6de4222bd8a4af8c7099b2e/expensetrackerdata", obj)
+    
+    axios.post("https://crudcrud.com/api/243ddb59ac3d4e8ea367e8f6155e3784/expensetrackerdata", obj)
     .then((response)=> printDetailsOnScreen(response.data))
     .catch((err)=>{
     document.body.innerHTML= document.body.innerHTML+ "<h4>Something went wrong</h4>";
@@ -14,7 +15,7 @@ forms.addEventListener('submit', (e)=>{
     //printDetailsOnScreen(obj);
 });
 window.addEventListener("DOMContentLoaded", ()=>{
-    axios.get("https://crudcrud.com/api/66b9a6b5c6de4222bd8a4af8c7099b2e/expensetrackerdata")
+    axios.get("https://crudcrud.com/api/243ddb59ac3d4e8ea367e8f6155e3784/expensetrackerdata")
     .then((response)=>{
     for(var i=0; i<response.data.length;i++){
         printDetailsOnScreen(response.data[i]);
@@ -35,7 +36,7 @@ function editUserDetails(eval,dval,cvalue,ivalue){
 }
 function deleteUser(ivalue){
     console.log(ivalue);
-    axios.delete(`https://crudcrud.com/api/66b9a6b5c6de4222bd8a4af8c7099b2e/expensetrackerdata/${ivalue}`)
+    axios.delete(`https://crudcrud.com/api/243ddb59ac3d4e8ea367e8f6155e3784/expensetrackerdata/${ivalue}`)
     .then((response)=> console.log("Successful"+response))
     .catch((err)=>{
         document.body.innerHTML= document.body.innerHTML+ "<h4>Something went wrong</h4>";
