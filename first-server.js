@@ -25,8 +25,6 @@ const server = http.createServer((req, res) => {
         res.write('</html>');
     }
     res.end();
-
-
     /*res.write('Welcome to this page!');
     res.end();*/
     //process.exit();
