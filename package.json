@@ -1,0 +1,28 @@
+{
+  "name": "client-data-in-a-server-file",
+  "version": "1.0.0",
+  "description": "Here, you can fetch data client enters in a form in a file on the server side and can display as well on the screen in front end side as well.",
+  "main": "first-server.js",
+  "dependencies": {
+    "treeify": "^1.1.0"
+  },
+  "devDependencies": {
+    "nodeman": "^1.1.2",
+    "nodemon": "^2.0.19"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon first-server.js",
+    "start-server": "nodemon first-server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ajay-professional/webDevAss2Task3Code..git"
+  },
+  "author": "Ajay-Kumar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ajay-professional/webDevAss2Task3Code./issues"
+  },
+  "homepage": "https://github.com/ajay-professional/webDevAss2Task3Code.#readme"
+}

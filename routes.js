@@ -47,6 +47,7 @@ const requestHandler = (req, res) => {
 // module.exports.someText='Lets go to the market!';
   
 //SHORTCUT
+
 exports.handler=requestHandler;
 exports.someText='You are joining software company this year';
 
