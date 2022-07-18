@@ -1,10 +1,47 @@
-const http = require('http');
+const express = require('express');
 
-const routes=require('./routes');
+const app = express();
 
-console.log(routes.someText);
-const server = http.createServer(routes.handler);
-server.listen(3000);
+app.use((req, res, next) => {
+    console.log('First middleware');
+    next();
+});
+
+
+app.use((req, res, next) => {
+    console.log('Second middleware');
+    res.send('<h1>Hello from Express JS</h1>');
+    res.send('{ key1: value }'); 
+});
+
+app.listen(3000);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 //res.setHeader('Content-Type', 'text/html');
