@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 const bodyParser = require('body-parser');
 
 const app = express();
@@ -6,15 +7,19 @@ const app = express();
 
 const adminMiddleware = require('./routes/admin');
 const shopMiddleware = require('./routes/shop');
+const succMidd = require('./routes/success');
 
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.static(path.join(__dirname, 'Public')));
 
 app.use('/admin', adminMiddleware);
 
-app.use('/shop',shopMiddleware);
+app.use(shopMiddleware);
 
-app.use((req, res, next)=>{
-    res.status(404).send('<h1>Page not found</h1>');
+app.use(succMidd);
+
+app.use((req, res, next) => {
+    res.status(404).sendFile(path.join(__dirname, './', 'views', 'page-not-found.html'));
 })
 
 app.listen(3000);

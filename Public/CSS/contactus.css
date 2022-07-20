@@ -1,0 +1,44 @@
+body {
+    margin: 0px;
+    padding: 0px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+#header {
+    background-color:  rgb(186, 128, 4);
+    padding: 12px;
+    text-align: center;
+}
+
+a {
+    color:rgb(59, 3, 57);
+
+}
+#ul-nav{
+    padding: 0px;
+    margin: 0px;
+   display:-ms-inline-grid;
+    align-items: center;
+}
+
+#form {
+    text-align: center;
+    margin:auto;
+}
+
+#btn-form {
+    color: aliceblue;
+    background-color: yellowgreen;
+    border: 1px black solid;
+}
+
+.list-ul{
+    padding:0px;
+    margin: 3px;
+   
+}
+button:hover,
+button:active{
+    background-color: aliceblue;
+    color:yellowgreen;
+}
