@@ -1,12 +1,9 @@
-const path = require('path');
+const productLogics = require('../controllers/products');
+
 const express = require('express');
-const rootDir = require('../Util/path');
 
 const router = express.Router();
 
+router.use('/success', productLogics.getSuccessMsg);
 
-
-router.use('/success', (req, res, next) => {
-    res.sendFile(path.join(rootDir, 'views', 'success.html'));
-});
 module.exports = router;
