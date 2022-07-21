@@ -1,28 +1,23 @@
 {
-  "name": "client-data-in-a-server-file",
+  "name": "nodejs-complete-guide",
   "version": "1.0.0",
-  "description": "Here, you can fetch data client enters in a form in a file on the server side and can display as well on the screen in front end side as well.",
-  "main": "first-server.js",
-  "dependencies": {
-    "treeify": "^1.1.0"
-  },
-  "devDependencies": {
-    "nodeman": "^1.1.2",
-    "nodemon": "^2.0.19"
-  },
+  "description": "Complete Node.js Guide",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon first-server.js",
-    "start-server": "nodemon first-server.js"
+    "start": "nodemon app.js",
+    "start-server": "node app.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ajay-professional/webDevAss2Task3Code..git"
-  },
-  "author": "Ajay-Kumar",
+  "author": "Maximilian Schwarzmüller",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/ajay-professional/webDevAss2Task3Code./issues"
+  "devDependencies": {
+    "nodemon": "^2.0.19"
   },
-  "homepage": "https://github.com/ajay-professional/webDevAss2Task3Code.#readme"
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "ejs": "^3.1.8",
+    "express": "^4.16.3",
+    "express-handlebars": "^6.0.6",
+    "pug": "^3.0.2"
+  }
 }
