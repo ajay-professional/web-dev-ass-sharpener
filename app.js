@@ -1,75 +1,58 @@
-const express = require('express');
 const path = require('path');
 
-const errMsg=require('./controllers/err_msg');
+const express = require('express');
 const bodyParser = require('body-parser');
+
+const errorController = require('./controllers/error');
+const sequelize = require('./util/database');
+const Product = require('./models/product');
+const User = require('./models/user');
 
 const app = express();
 
+app.set('view engine', 'ejs');
+app.set('views', 'views');
 
-const adminMiddleware = require('./routes/admin');
-const shopMiddleware = require('./routes/shop');
-const succMidd = require('./routes/success');
+const adminRoutes = require('./routes/admin');
+const shopRoutes = require('./routes/shop');
 
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, 'Public')));
+app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/admin', adminMiddleware);
+app.use((req, res, next) => {
+  User.findById(1)
+    .then(user => {
+      req.user = user;
+      next();
+    })
+    .catch(err => console.log(err));
+});
 
-app.use(shopMiddleware);
+app.use('/admin', adminRoutes);
+app.use(shopRoutes);
 
-app.use(succMidd);
+app.use(errorController.get404);
 
-app.use(errMsg.getErrorNotice);
+Product.belongsTo(User, { constraints: true, onDelete: 'CASCADE' });
+User.hasMany(Product);
 
-app.listen(3000);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//res.setHeader('Content-Type', 'text/html');
-    // console.log(req.url);
-    // if (req.url == '/home') {
-    //     res.write('<html>');
-    //     res.write('<head><title>My NodeJS content.</title></head>');
-    //     res.write('<body><h1>Welcome Home</h1></body>');
-    //     res.write('</html>');
-    // } else if (req.url == '/about') {
-    //     res.write('<html>');
-    //     res.write('<head><title>My NodeJS content.</title></head>');
-    //     res.write('<body><h1>Welcome to "About us" page</h1></body>');
-    //     res.write('</html>');
-    // } else if (req.url == '/node') {
-    //     res.write('<html>');
-    //     res.write('<head><title>My NodeJS content.</title></head>');
-    //     res.write('<body><h1>Welcome to my Node Js project</h1></body>');
-    //     res.write('</html>');
-    // }
-/*res.write('Welcome to this page!');
-res.end();*/
-    //process.exit();
+sequelize
+  // .sync({ force: true })
+  .sync()
+  .then(result => {
+    return User.findById(1);
+    // console.log(result);
+  })
+  .then(user => {
+    if (!user) {
+      return User.create({ name: 'Max', email: 'test@test.com' });
+    }
+    return user;
+  })
+  .then(user => {
+    // console.log(user);
+    app.listen(3000);
+  })
+  .catch(err => {
+    console.log(err);
+  });
