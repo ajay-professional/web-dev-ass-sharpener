@@ -44,3 +44,17 @@ close.addEventListener("click", () => {
 document.getElementById('tog').addEventListener('change', () => {
     document.body.classList.toggle('bkcolor');
 });
+
+const imgs=document.getElementById('carousal-items')
+const carlImgs=document.querySelectorAll('img');
+let i=0;
+function runCarousal(){
+    imgs.style.transform = `translateX(${-i * 250}px)`;
+    i++;
+    if(i>carlImgs.length-1){
+        i=0;
+    }
+}
+setInterval(runCarousal, 1500);
+
+
