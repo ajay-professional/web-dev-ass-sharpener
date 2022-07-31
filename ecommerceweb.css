@@ -13,10 +13,10 @@ body {
     min-height: 100vh;
 }
 
-button {
+#ham {
     background-color: goldenrod;
     color: darkmagenta;
-    border: none;
+    border: darkmagenta solid 1px;
     position: fixed;
     top: 10px;
     right: 20px;
@@ -24,10 +24,30 @@ button {
     transition: transform 0.3s ease-in-out;
 }
 
+#btn1 {
+    background-color: goldenrod;
+    color: darkmagenta;
+    border: darkmagenta solid 1px;
+    position: relative;
+}
+
+.toast {
+    background-color: goldenrod;
+    color: darkmagenta;
+    border: darkmagenta solid 1px;
+    border-radius: 5px;
+}
+
+#container {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+}
+
 nav {
     background-color: goldenrod;
     color: darkmagenta;
-    border: none;
+    border: darkmagenta solid 1px;
     position: fixed;
     height: 100%;
     right: 0px;
@@ -35,7 +55,7 @@ nav {
     transition: transform 0.3s ease-in-out;
 }
 
-button.active {
+#ham.active {
     transform: translateX(-100px);
 }
 
@@ -56,4 +76,5 @@ nav ul li {
 
 nav a {
     text-decoration: none;
+    border-bottom: white 1px solid;
 }
