@@ -45,16 +45,34 @@ document.getElementById('tog').addEventListener('change', () => {
     document.body.classList.toggle('bkcolor');
 });
 
-const imgs=document.getElementById('carousal-items')
-const carlImgs=document.querySelectorAll('img');
-let i=0;
-function runCarousal(){
+const imgs = document.getElementById('carousal-items')
+const carlImgs = document.getElementsByClassName('carcl');
+let i = 0;
+function runCarousal() {
     imgs.style.transform = `translateX(${-i * 250}px)`;
     i++;
-    if(i>carlImgs.length-1){
-        i=0;
+    if (i > carlImgs.length - 1) {
+        i = 0;
     }
 }
 setInterval(runCarousal, 1500);
+
+
+const im2=document.getElementById('im2');
+document.getElementById('zooming').addEventListener("mousemove", (e) => {
+    const x = e.clientX - e.target.offsetLeft;
+    const y = e.clientY - e.target.offsetTop;
+
+    console.log(x, y);
+
+   
+    im2.style.transformOrigin = `${x}px ${y}px`;
+    im2.style.transform = "scale(2)";
+});
+
+imgs.addEventListener("mouseleave", () => {
+    im2.style.transformOrigin = "center center";
+    im2.style.transform = "scale(1)";
+});
 
 

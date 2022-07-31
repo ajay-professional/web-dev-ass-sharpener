@@ -160,8 +160,14 @@ nav a {
     transform: translateX(0);
 }
 
-img {
+.carcl{
     object-fit: cover;
     height: 250px;
     width: 250px;
+}
+#zooming{
+    height: 300px;
+    width: 300px;
+    position: fixed;
+    right: 5px;
 }
