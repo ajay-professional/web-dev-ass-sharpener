@@ -29,3 +29,15 @@ function autoText(){
     }
 }
 setInterval(autoText, 100);
+
+const open = document.getElementById("open");
+const close = document.getElementById("close");
+const container2 = document.getElementById("container2");
+
+open.addEventListener("click", () => {
+    container2.classList.add("active");
+});
+
+close.addEventListener("click", () => {
+    container2.classList.remove("active");
+});
