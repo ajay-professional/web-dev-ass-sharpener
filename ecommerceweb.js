@@ -18,3 +18,14 @@ function showNotification() {
         dev.remove();
     }, 3000);
 }
+
+const autotext='Welcome to one of fast growing ecommerce coorporation of India!                ';
+let idx=0;
+function autoText(){
+    document.getElementById('autotext').innerHTML=autotext.slice(0, idx);
+    idx++;
+    if(idx>autotext.length-1){
+        idx=0;
+    }
+}
+setInterval(autoText, 100);
