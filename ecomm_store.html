@@ -27,21 +27,26 @@
                 <a class="nav-link" class="li-ul6" href="C:\Users\gulshan\Desktop\ecomm_about.html"
                     style="color: darkmagenta; font-weight: bold;font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">ABOUT</a>
             </li>
-            <button id="cart" title="open/close cart"><sup><sup><img width="25px" height="23px" src="https://tse4.mm.bing.net/th?id=OIP.q_FTdPIgEPUwnolfd9hfeQHaGr&pid=Api&P=0"/></sup></sup>Cart</button>
+            <button id="cart" title="open/close cart"><sup><sup><img width="25px" height="23px"
+                            src="https://tse4.mm.bing.net/th?id=OIP.q_FTdPIgEPUwnolfd9hfeQHaGr&pid=Api&P=0" /></sup></sup>Cart<sup
+                    id="prodcount"
+                    style="font-size:17px;color:white;padding-top:20px;font-family:'Times New Roman', Times, serif;font-weight: bold;">0</sup></button>
         </ul>
         <div class="popup-container" id="popup-id-container">
             <div id="pop-up">
                 <h1>Cart Products</h1>
                 <pre><h5><b><u>ITEMS</u></b>                     <b><u>PRICE</u></b>           <b><u>QUANTITY</u></b></h5></pre>
-                <div>  
-                    <ol  id="cartItem">
+                <div>
+                    <ol id="cartItem">
 
-                    </ol> 
+                    </ol>
                 </div>
-                <br/><br/>
+                <br /><br />
                 <label for="tottext"><b>Total</b></label>
-                <input type="text" id="tottext" name="total" style="border:none;background-color: rgb(255, 255, 159);" readonly><br/><br/><br/>
-                <input type="button" value="PURCHASE" style="color:white;background-color: rgb(246, 52, 246);;border-color: white;border-radius: 7px;"/>
+                <input type="text" id="tottext" name="total" style="border:none;background-color: rgb(255, 255, 159);"
+                    readonly><br /><br /><br />
+                <input type="button" value="PURCHASE"
+                    style="color:white;background-color: rgb(246, 52, 246);;border-color: white;border-radius: 7px;" />
             </div>
         </div>
         <div id="dgag">
@@ -59,65 +64,77 @@
             <div class="stone">
                 <h3><mark>Stones</mark></h3>
             </div>
-            <div id="item1">
-                <h5><small>Fuchsite Natural Single Gemstone</small></h5>
-                <img src="https://tse4.mm.bing.net/th?id=OIP.yS_3usllFbfNbyF-ZqfS_QHaJ4&pid=Api&P=0" alt="" class="imi">
-                <button id="Fuchsite Natural Single Gemstone Rs.1399" onclick=addToastNotification(event)>Add to
-                    cart</button>
-                <h6>Rs.1,399/-</h6>
-            </div>
-            <div id="item2">
-                <h5><small>single stone Selenite</small></h5>
-                <img src="https://thumbs.dreamstime.com/z/isolated-image-single-stone-selenite-yellow-66023790.jpg"
-                    alt="" class="imi">
-                <button id="single stone Selenite Rs.699" onclick=addToastNotification(event)>Add to cart</button>
-                <h6>Rs.699/-</h6>
-            </div>
-            <div id="item3">
-                <h5><small>Sparkling Fairy Amethyst Stone</small></h5>
-                <img src="https://s.ecrater.com/stores/361937/5626534ccd32d_361937b.jpg" alt="" class="imi">
-                <button id="Sparkling Fairy Amethyst Stone Rs.1499" onclick=addToastNotification(event)>Add to
-                    cart</button>
-                <h6>Rs.1,499/-</h6>
-            </div>
-            <div id="item4">
-                <h5><small>Fluorite Rough Gemstone Solid</small></h5>
-                <img src="https://www.laurelnymph.com/wp-content/uploads/2018/09/DSCF9147-768x576.jpg" alt=""
-                    class="imi">
-                <button id="Fluorite Rough Gemstone Solid Rs.1700" onclick=addToastNotification(event)>Add to
-                    cart</button>
-                <h6>Rs.1,700/-</h6>
+            <div id="stonesinweb">
+                <!-- <div id="item1">
+                    <h5><small>Fuchsite Natural Single Gemstone</small></h5>
+                    <img src="https://tse4.mm.bing.net/th?id=OIP.yS_3usllFbfNbyF-ZqfS_QHaJ4&pid=Api&P=0" alt=""
+                        class="imi">
+                    <button id="Fuchsite Natural Single Gemstone Rs.1399" onclick=addToastNotification(event)
+                        class="addcartbtn">Add to cart</button>
+                    <h6>Rs.1,399/-</h6>
+                </div>
+                <div id="item2">
+                    <h5><small>single stone Selenite</small></h5>
+                    <img src="https://thumbs.dreamstime.com/z/isolated-image-single-stone-selenite-yellow-66023790.jpg"
+                        alt="" class="imi">
+                    <button id="single stone Selenite Rs.699" onclick=addToastNotification(event) class="addcartbtn">Add
+                        to
+                        cart</button>
+                    <h6>Rs.699/-</h6>
+                </div>
+                <div id="item3">
+                    <h5><small>Sparkling Fairy Amethyst Stone</small></h5>
+                    <img src="https://s.ecrater.com/stores/361937/5626534ccd32d_361937b.jpg" alt="" class="imi">
+                    <button id="Sparkling Fairy Amethyst Stone Rs.1499" onclick=addToastNotification(event)
+                        class="addcartbtn">Add to
+                        cart</button>
+                    <h6>Rs.1,499/-</h6>
+                </div>
+                <div id="item4">
+                    <h5><small>Fluorite Rough Gemstone Solid</small></h5>
+                    <img src="https://www.laurelnymph.com/wp-content/uploads/2018/09/DSCF9147-768x576.jpg" alt=""
+                        class="imi">
+                    <button id="Fluorite Rough Gemstone Solid Rs.1700" onclick=addToastNotification(event)
+                        class="addcartbtn">Add to cart</button>
+                    <h6>Rs.1,700/-</h6>
+                </div> -->
             </div>
             <div class="crystal">
                 <h3><mark>Crystals</mark></h3>
             </div>
-            <div id="item1">
-                <h5><small> Indian Apophyllite Crystal</small></h5>
-                <img src="https://tse3.mm.bing.net/th?id=OIP.vty7MC8m3H5ChKIelllUGQHaHY&pid=Api&P=0" alt="" class="imi">
-                <button id=" Indian Apophyllite Crystal Rs.1200" onclick=addToastNotification(event)>Add to
-                    cart</button>
-                <h6>Rs.1,200/-</h6>
-            </div>
-            <div id="item2">
-                <h5><small>Apophyllite Crystal Point Pyramid</small></h5>
-                <img src="https://i.pinimg.com/736x/fc/63/67/fc63675cfc849a136b75cb07b7147bbb.jpg" alt="" class="imi">
-                <button id="Apophyllite Crystal Point Pyramid Rs.999" onclick=addToastNotification(event)>Add to
-                    cart</button>
-                <h6>Rs.999/-</h6>
-            </div>
-            <div id="item3">
-                <h5><small>Ruby Zoisite (Anyolite)</small></h5>
-                <img src="https://the-crystal-council.sfo2.digitaloceanspaces.com/prod/167/responsive-images/Ruby-Zoisite___list_600_400.jpg"
-                    alt="" class="imi">
-                <button id="Ruby Zoisite (Anyolite) Rs.1600" onclick=addToastNotification(event)>Add to cart</button>
-                <h6>Rs.1,600/-</h6>
-            </div>
-            <div id="item4">
-                <h5><small>Shattuckite</small></h5>
-                <img src="https://the-crystal-council.sfo2.digitaloceanspaces.com/prod/133/responsive-images/shattuckite-3-%282500px%29___list_351_234.jpg"
-                    alt="" class="imi">
-                <button id="Shattuckite Rs.1800" onclick=addToastNotification(event)>Add to cart</button>
-                <h6>Rs.1,800/-</h6>
+            <div id="crystalsinweb">
+                <!-- <div id="item1">
+                    <h5><small> Indian Apophyllite Crystal</small></h5>
+                    <img src="https://tse3.mm.bing.net/th?id=OIP.vty7MC8m3H5ChKIelllUGQHaHY&pid=Api&P=0" alt=""
+                        class="imi">
+                    <button id=" Indian Apophyllite Crystal Rs.1200" onclick=addToastNotification(event)
+                        class="addcartbtn">Add to cart</button>
+                    <h6>Rs.1,200/-</h6>
+                </div>
+                <div id="item2">
+                    <h5><small>Apophyllite Crystal Point Pyramid</small></h5>
+                    <img src="https://i.pinimg.com/736x/fc/63/67/fc63675cfc849a136b75cb07b7147bbb.jpg" alt=""
+                        class="imi">
+                    <button id="Apophyllite Crystal Point Pyramid Rs.999" onclick=addToastNotification(event)
+                        class="addcartbtn">Add to cart</button>
+                    <h6>Rs.999/-</h6>
+                </div>
+                <div id="item3">
+                    <h5><small>Ruby Zoisite (Anyolite)</small></h5>
+                    <img src="https://the-crystal-council.sfo2.digitaloceanspaces.com/prod/167/responsive-images/Ruby-Zoisite___list_600_400.jpg"
+                        alt="" class="imi">
+                    <button id="Ruby Zoisite (Anyolite) Rs.1600" onclick=addToastNotification(event)
+                        class="addcartbtn">Add to cart</button>
+                    <h6>Rs.1,600/-</h6>
+                </div>
+                <div id="item4">
+                    <h5><small>Shattuckite</small></h5>
+                    <img src="https://the-crystal-council.sfo2.digitaloceanspaces.com/prod/133/responsive-images/shattuckite-3-%282500px%29___list_351_234.jpg"
+                        alt="" class="imi">
+                    <button id="Shattuckite Rs.1800" onclick=addToastNotification(event) class="addcartbtn">Add to
+                        cart</button>
+                    <h6>Rs.1,800/-</h6>
+                </div> -->
             </div>
         </div>
         <div id="dgag2">
@@ -136,7 +153,8 @@
                 </ul>
             </div>
         </div>
-        <script src="ecomm_web.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.0.0-alpha.1/axios.min.js"></script>
+        <script src="ecomm_javascript_file.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
             crossorigin="anonymous"></script>

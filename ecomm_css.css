@@ -146,8 +146,8 @@ h6 {
     left: 475px;
     color: white;
     background-color: rgb(125, 90, 1);
+    border-color: aliceblue;
     border-width: 1.5px;
-    border-color: white;
     margin-bottom: 20px;
     border-radius: 7px;
 }
@@ -219,7 +219,6 @@ h6 {
 .hea{
     border-bottom: 1px solid black;
 }
-
 #cartItem{
     margin-top: 60px;
     position: relative;
