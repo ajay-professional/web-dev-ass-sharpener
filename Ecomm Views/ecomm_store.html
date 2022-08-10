@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecommerce Project</title>
+    <link rel="stylesheet" href="../Ecomm Public/ecomm_css.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+</head>
+
+<body>
+    <div>
+        <ul class="nav justify-content-center" id="nav_b">
+            <li class="nav-item">
+                <a class="nav-link active" class="li-ul6" aria-current="page"
+                    href="C:\Users\gulshan\Desktop\Ecomm Views\ecomm_home.html"
+                    style="color: darkmagenta; font-weight: bold;font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">HOME</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" class="li-ul6" href="#"
+                    style="color: darkmagenta; font-weight: bold;font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">STORE</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" class="li-ul6" href="C:\Users\gulshan\Desktop\Ecomm Views\ecomm_about.html"
+                    style="color: darkmagenta; font-weight: bold;font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">ABOUT</a>
+            </li>
+            <button id="cart" title="open/close cart"><sup><sup><img width="25px" height="23px"
+                            src="https://tse4.mm.bing.net/th?id=OIP.q_FTdPIgEPUwnolfd9hfeQHaGr&pid=Api&P=0" /></sup></sup>Cart<sup
+                    id="prodcount"
+                    style="font-size:17px;color:white;padding-top:20px;font-family:'Times New Roman', Times, serif;font-weight: bold;">0</sup></button>
+        </ul>
+        <div class="popup-container" id="popup-id-container">
+            <div id="pop-up">
+                <h1>Cart Products</h1>
+                <pre><h5><b><u>ITEMS</u></b>                     <b><u>PRICE</u></b>           <b><u>QUANTITY</u></b></h5></pre>
+                <div>
+                    <ol id="cartItem">
+
+                    </ol>
+                </div>
+                <br /><br />
+                <label for="tottext"><b>Total</b></label>
+                <input type="text" id="tottext" name="total" style="border:none;background-color: rgb(255, 255, 159);"
+                    readonly><br /><br /><br />
+                <input type="button" value="PURCHASE"
+                    style="color:white;background-color: rgb(246, 52, 246);;border-color: white;border-radius: 7px;" />
+            </div>
+        </div>
+        <div id="dgag">
+            <h1
+                style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif">
+                Sparkling Stones</h1>
+            <h5
+                style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;color:darkmagenta;">
+                Buy and Bring peace into your Life...</h5>
+        </div>
+        <div id="container">
+
+        </div>
+        <div>
+            <div class="stone">
+                <h3><mark>Stones</mark></h3>
+            </div>
+            <div id="stonesinweb">
+                <!-- <div id="item1">
+                    <h5><small>Fuchsite Natural Single Gemstone</small></h5>
+                    <img src="https://tse4.mm.bing.net/th?id=OIP.yS_3usllFbfNbyF-ZqfS_QHaJ4&pid=Api&P=0" alt=""
+                        class="imi">
+                    <button id="Fuchsite Natural Single Gemstone Rs.1399" onclick=addToastNotification(event)
+                        class="addcartbtn">Add to cart</button>
+                    <h6>Rs.1,399/-</h6>
+                </div>
+                <div id="item2">
+                    <h5><small>single stone Selenite</small></h5>
+                    <img src="https://thumbs.dreamstime.com/z/isolated-image-single-stone-selenite-yellow-66023790.jpg"
+                        alt="" class="imi">
+                    <button id="single stone Selenite Rs.699" onclick=addToastNotification(event) class="addcartbtn">Add
+                        to
+                        cart</button>
+                    <h6>Rs.699/-</h6>
+                </div>
+                <div id="item3">
+                    <h5><small>Sparkling Fairy Amethyst Stone</small></h5>
+                    <img src="https://s.ecrater.com/stores/361937/5626534ccd32d_361937b.jpg" alt="" class="imi">
+                    <button id="Sparkling Fairy Amethyst Stone Rs.1499" onclick=addToastNotification(event)
+                        class="addcartbtn">Add to
+                        cart</button>
+                    <h6>Rs.1,499/-</h6>
+                </div>
+                <div id="item4">
+                    <h5><small>Fluorite Rough Gemstone Solid</small></h5>
+                    <img src="https://www.laurelnymph.com/wp-content/uploads/2018/09/DSCF9147-768x576.jpg" alt=""
+                        class="imi">
+                    <button id="Fluorite Rough Gemstone Solid Rs.1700" onclick=addToastNotification(event)
+                        class="addcartbtn">Add to cart</button>
+                    <h6>Rs.1,700/-</h6>
+                </div> -->
+            </div>
+            <div class="crystal">
+                <h3><mark>Crystals</mark></h3>
+            </div>
+            <div id="crystalsinweb">
+                <!-- <div id="item1">
+                    <h5><small> Indian Apophyllite Crystal</small></h5>
+                    <img src="https://tse3.mm.bing.net/th?id=OIP.vty7MC8m3H5ChKIelllUGQHaHY&pid=Api&P=0" alt=""
+                        class="imi">
+                    <button id=" Indian Apophyllite Crystal Rs.1200" onclick=addToastNotification(event)
+                        class="addcartbtn">Add to cart</button>
+                    <h6>Rs.1,200/-</h6>
+                </div>
+                <div id="item2">
+                    <h5><small>Apophyllite Crystal Point Pyramid</small></h5>
+                    <img src="https://i.pinimg.com/736x/fc/63/67/fc63675cfc849a136b75cb07b7147bbb.jpg" alt=""
+                        class="imi">
+                    <button id="Apophyllite Crystal Point Pyramid Rs.999" onclick=addToastNotification(event)
+                        class="addcartbtn">Add to cart</button>
+                    <h6>Rs.999/-</h6>
+                </div>
+                <div id="item3">
+                    <h5><small>Ruby Zoisite (Anyolite)</small></h5>
+                    <img src="https://the-crystal-council.sfo2.digitaloceanspaces.com/prod/167/responsive-images/Ruby-Zoisite___list_600_400.jpg"
+                        alt="" class="imi">
+                    <button id="Ruby Zoisite (Anyolite) Rs.1600" onclick=addToastNotification(event)
+                        class="addcartbtn">Add to cart</button>
+                    <h6>Rs.1,600/-</h6>
+                </div>
+                <div id="item4">
+                    <h5><small>Shattuckite</small></h5>
+                    <img src="https://the-crystal-council.sfo2.digitaloceanspaces.com/prod/133/responsive-images/shattuckite-3-%282500px%29___list_351_234.jpg"
+                        alt="" class="imi">
+                    <button id="Shattuckite Rs.1800" onclick=addToastNotification(event) class="addcartbtn">Add to
+                        cart</button>
+                    <h6>Rs.1,800/-</h6>
+                </div> -->
+            </div>
+        </div>
+        <div id="dgag2">
+            <h1>Sparkling Stones</h1>
+            <div id="dgag3">
+                <ul>
+                    <li class="dsa"><a href="https://www.youtube.com/" target="_blank" style="color: red;"><img
+                                style="width:60px;height:40px;"
+                                src="https://tse3.mm.bing.net/th?id=OIP.io7qjaMuglzEDK35u6RcXgHaEK&pid=Api&P=0" /></a>
+                    </li>
+                    <li class="dsa"></a><a href="https://open.spotify.com/" target="_blank"
+                            style="color:green;">Spotify</a>
+                    </li>
+                    <li class="dsa"></a><a href="https://www.facebook.com/" target="_blank"
+                            style="color:rgb(53, 53, 247);">Facebook</a></li>
+                </ul>
+            </div>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"></script>
+        <script src="../Ecomm Public/ecomm_javascript_file.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+            crossorigin="anonymous"></script>
+    </div>
+</body>
+
+</html>
