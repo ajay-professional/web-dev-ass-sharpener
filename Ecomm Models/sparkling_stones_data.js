@@ -3,19 +3,19 @@ const sequelize = require('../util/Database');
 const sparkling_stones_data = sequelize.define('sparkling_stones_data', {
   s_no: {
     type: Sequelize.INTEGER,
-    autoIncrement: true,
     allowNull: false,
     primaryKey: true,
+    autoIncrement: true,
   },
-  item_name: {
+  productName: {
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
+  productPrice: {
     type: Sequelize.STRING,
     allowNull: false
   },
-  price: {
-    type: Sequelize.STRING,
-    allowNull: false
-  },
-  quantity: {
+  count: {
     type: Sequelize.INTEGER,
     allowNull: false
   }

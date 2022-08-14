@@ -6,3 +6,7 @@ const sequelize = new Sequelize('node-complete', 'root', 'A4apple_mysql', {
 });
 
 module.exports = sequelize;
+
+
+
+
