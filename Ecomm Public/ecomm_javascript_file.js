@@ -51,8 +51,8 @@ window.addEventListener("DOMContentLoaded", () => {
     });
 
     axios.get('http://localhost:6999/grandTotal').then((data) => {
-        console.log(data.data[data.data.length-1].grandTotal);
-        document.getElementById('tottext').value = data.data[data.data.length-1].grandTotal;
+        console.log(data.data[data.data.length - 1].grandTotal);
+        document.getElementById('tottext').value = data.data[data.data.length - 1].grandTotal;
     }).catch(err => {
         console.log(err);
     });
@@ -203,10 +203,10 @@ function printOnCart(dat) {
             b = totdecNew;
             grandTotal = 'Rs.' + `${totdecNew}` + '/-';
             document.getElementById('tottext').value = grandTotal;
-            let obj2={
-                grandTotal:grandTotal
+            let obj2 = {
+                grandTotal: grandTotal
             };
-            if(grandTotal==='Rs.0/-'){
+            if (grandTotal === 'Rs.0/-') {
                 axios.delete('http://localhost:6999/delFromGrandTotal').then((response) => {
                     console.log('Successful axios delete');
                 }).catch((err) => {
@@ -217,7 +217,7 @@ function printOnCart(dat) {
             axios.post('http://localhost:6999/grandTotal/grand', obj2).then((response) => {
                 console.log(response);
                 console.log('Success');
-            }).catch(err=>{
+            }).catch(err => {
                 console.log(err);
                 console.log('Error in grand total of axios');
             });

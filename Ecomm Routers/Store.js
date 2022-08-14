@@ -12,7 +12,10 @@ router.post('/grandTotal/grand', productsController.addGrandTotalInDatabase);
 
 router.post('/addProdDetailsInDatabase', productsController.addProdDetailsInDatabase);
 
+
 router.get('/domloaded', productsController.domLoaded);
+
+
 
 router.get('/grandTotal', productsController.grandTotal);
 

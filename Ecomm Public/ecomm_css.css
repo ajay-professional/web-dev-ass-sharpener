@@ -6,6 +6,7 @@
     color: darkmagenta;
 }
 
+
 #dgag {
     position: relative;
     top: 0px;
@@ -151,6 +152,7 @@ h6 {
     margin-bottom: 20px;
     border-radius: 7px;
 }
+
 #about {
     position: relative;
     left: 450px;
@@ -185,15 +187,16 @@ h6 {
     width: 80%;
 }
 
-.toas{
+.toas {
     color: black;
-    background-color:  rgb(225, 219, 219);;
+    background-color: rgb(225, 219, 219);
+    ;
     border: black solid 1px;
     border-radius: 10px;
 }
 
 #container {
-    position:fixed;
+    position: fixed;
     text-align: center;
     top: 180px;
     left: 1040px;
@@ -201,33 +204,38 @@ h6 {
     height: 120px;
     z-index: 3;
 }
-.popup-container{
-    position:absolute;
-    z-index:2;
-    top:50px;
-    left:300px;
-    width:950px;
-    color:black;
+
+.popup-container {
+    position: absolute;
+    z-index: 2;
+    top: 50px;
+    left: 300px;
+    width: 950px;
+    color: black;
     display: none;
     text-align: center;
     background-color: rgb(255, 255, 159);
-    border:1px black solid;
+    border: 1px black solid;
 }
-.popup-container.active{
-    display:flex;
+
+.popup-container.active {
+    display: flex;
 }
-.hea{
+
+.hea {
     border-bottom: 1px solid black;
 }
-#cartItem{
+
+#cartItem {
     margin-top: 60px;
     position: relative;
-    left:-100px;
-    width:700px;
+    left: -100px;
+    width: 700px;
 }
-#pop-up{
+
+#pop-up {
     position: relative;
     text-align: center;
-    left:130px;
-    top:0px;
+    left: 130px;
+    top: 0px;
 }

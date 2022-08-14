@@ -20,4 +20,5 @@ const sparkling_stones_data = sequelize.define('sparkling_stones_data', {
     allowNull: false
   }
 });
+
 module.exports = sparkling_stones_data;

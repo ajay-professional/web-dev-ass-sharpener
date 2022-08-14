@@ -54,7 +54,6 @@ exports.deleteProduct = (req, res, next) => {
         console.log('DESTROYED & Deleted PRODUCT');
     }).catch(err => console.log(err));
 };
-
 // exports.delFromGrandTotal = (req, res, next) => {
 //     grandTotal_data.destroy({
 //         where: {
