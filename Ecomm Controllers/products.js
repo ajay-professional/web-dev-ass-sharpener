@@ -1,6 +1,9 @@
 const sparkling_stones_data = require('../Ecomm Models/sparkling_stones_data');
 const grandTotal_data = require('../Ecomm Models/grandTotal_data');
-
+const CartItem = require('../Ecomm Models/cart-item');
+const Order = require('../Ecomm Models/order');
+const Cart = require('../Ecomm Models/cart');
+const User = require('../Ecomm Models/user');
 exports.showProductsOnScreen = (req, res, next) => {
     res.json({
         products1:
@@ -26,7 +29,8 @@ exports.addProdDetailsInDatabase = (req, res, next) => {
     sparkling_stones_data.create({
         productName,
         productPrice,
-        count
+        count,
+        userId: req.user.id
     }).then(result => {
         console.log('Added Product to the database');
     }).catch(err => {
@@ -35,7 +39,8 @@ exports.addProdDetailsInDatabase = (req, res, next) => {
     });
 
     grandTotal_data.create({
-        grandTotal
+        grandTotal,
+        userId: req.user.id
     }).then(result => {
         console.log('total added to the database');
     }).catch(err => {
@@ -54,15 +59,6 @@ exports.deleteProduct = (req, res, next) => {
         console.log('DESTROYED & Deleted PRODUCT');
     }).catch(err => console.log(err));
 };
-// exports.delFromGrandTotal = (req, res, next) => {
-//     grandTotal_data.destroy({
-//         where: {
-            
-//         }
-//     }).then(result => {
-//         console.log('DESTROYED & Deleted PRODUCT');
-//     }).catch(err => console.log(err));
-// };
 
 exports.addGrandTotalInDatabase = (req, res, next) => {
     const grandTotal = req.body.grandTotal;
@@ -95,5 +91,17 @@ exports.grandTotal = (req, res, next) => {
             res.json(products);
         }).catch(err => {
             console.log(err);
-        })
+        });
+};
+
+exports.orderDet = (req, res, next) => {
+    Order.create({
+        userId: req.user.id,
+    }).then(result => {
+        console.log('Hi Result');
+        res.json({ orderid: result.dataValues.id, success : true});
+    }).catch(err => {
+        console.log(err);
+        console.log('Error in controller grandtotal');
+    });
 };

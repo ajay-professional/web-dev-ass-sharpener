@@ -14,6 +14,7 @@
 <body>
     <div>
         <ul class="nav justify-content-center" id="nav_b">
+            <button id="orders" title="open/close orderItem">My Orders</button>
             <li class="nav-item">
                 <a class="nav-link active" class="li-ul6" aria-current="page"
                     href="C:\Users\gulshan\Desktop\Ecomm Views\ecomm_home.html"
@@ -45,8 +46,27 @@
                 <label for="tottext"><b>Total</b></label>
                 <input type="text" id="tottext" name="total" style="border:none;background-color: rgb(255, 255, 159);"
                     readonly><br /><br /><br />
-                <input type="button" value="PURCHASE"
+                <input type="button" value="ORDER NOW" id="orderdetails"
                     style="color:white;background-color: rgb(246, 52, 246);;border-color: white;border-radius: 7px;" />
+            </div>
+        </div>
+        <div class="odr-container" id="odr-id-container">
+            <div id="odr">
+                <h1>Order Details</h1><input type="button" value="Clear All" id="clrall">
+                <br />
+                <pre><h5><b><u>ITEMS</u></b>                     <b><u>PRICE</u></b>           <b><u>QUANTITY</u></b></h5></pre>
+                <div id="odrprnt">
+                    <ol id="orderItem">
+
+                    </ol>
+                </div>
+                <br /><br />
+                <label for="odrtext"><b>Total=</b></label>
+                <input type="text" id="odrtext" name="total" style="border:none;background-color: rgb(255, 255, 159);"
+                    readonly>
+                <label for="odrid"><b>Order Id=</b></label>
+                <input type="text" id="odrid" name="odrid" style="border:none;background-color: rgb(255, 255, 159);"
+                    readonly><br /><br /><br />
             </div>
         </div>
         <div id="dgag">
@@ -99,6 +119,10 @@
                     <h6>Rs.1,700/-</h6>
                 </div> -->
             </div>
+            <!-- <div id="pagination">
+                <button class="pag" formaction="?page==1">1</button>
+                <button class="pag">2</button>
+            </div> -->
             <div class="crystal">
                 <h3><mark>Crystals</mark></h3>
             </div>
@@ -141,9 +165,7 @@
             <h1>Sparkling Stones</h1>
             <div id="dgag3">
                 <ul>
-                    <li class="dsa"><a href="https://www.youtube.com/" target="_blank" style="color: red;"><img
-                                style="width:60px;height:40px;"
-                                src="https://tse3.mm.bing.net/th?id=OIP.io7qjaMuglzEDK35u6RcXgHaEK&pid=Api&P=0" /></a>
+                    <li class="dsa"><a href="https://www.youtube.com/" target="_blank" style="color: red;">YouTube</a>
                     </li>
                     <li class="dsa"></a><a href="https://open.spotify.com/" target="_blank"
                             style="color:green;">Spotify</a>
@@ -155,9 +177,11 @@
         </div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"></script>
         <script src="../Ecomm Public/ecomm_javascript_file.js"></script>
+        <script src="../Ecomm Public/ecomm_orders.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
             crossorigin="anonymous"></script>
     </div>
 </body>
+
 </html>

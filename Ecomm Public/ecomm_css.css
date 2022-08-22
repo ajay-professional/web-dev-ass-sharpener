@@ -81,7 +81,16 @@ button {
     border: white solid 2px;
     border-radius: 10px;
 }
-
+#pagination{
+    text-align: center;
+}
+.pag{
+    left:0px; 
+}
+.pag.act{
+    color:white;
+    background-color:  rgb(246, 52, 246);
+}
 h6 {
     position: relative;
     top: -25px;
@@ -144,13 +153,23 @@ h6 {
 
 #cart {
     position: relative;
-    left: 475px;
+    left: 410px;
     color: white;
     background-color: rgb(125, 90, 1);
     border-color: aliceblue;
     border-width: 1.5px;
     margin-bottom: 20px;
     border-radius: 7px;
+}
+#orders{
+    position: relative;
+    left:-410px;
+    color: white;
+    background-color: rgb(125, 90, 1);
+    border-color: aliceblue;
+    border-width: 1.5px;
+    margin-bottom: 20px;
+    border-radius: 7px; 
 }
 
 #about {
@@ -159,6 +178,27 @@ h6 {
     width: 810px;
     height: 400px;
     text-align: center;
+}
+#aboutdgag2 {
+    position: relative;
+    bottom: 0px;
+    width: 100%;
+    top: 430px;
+    height: 150px;
+    background-color: gray;
+    text-align: left;
+    padding-left: 80px;
+    padding-top: 25px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: aliceblue;
+}
+
+#aboutdgag3 {
+    position: relative;
+    left: 1030px;
+    bottom: 100px;
+    display: inline-flex;
+    list-style-type: none;
 }
 
 #crst {
@@ -238,4 +278,38 @@ h6 {
     text-align: center;
     left: 130px;
     top: 0px;
+}
+.odr-container {
+    position: absolute;
+    z-index: 3;
+    top: 185px;
+    width: 100%;
+    height:100%;
+    color: black;
+    display: none;
+    text-align: center;
+    background-color: rgb(247, 247, 164);
+}
+.odr-container.active2{
+    display: flex;
+}
+
+#odr{
+    position: relative;
+    text-align: center;
+    left: 335px;
+    top: 30px;
+    bottom: 20px;
+}
+#clrall{
+    position:relative;
+    top:-60px;
+    right:-400px;
+    height:30px;
+    width:70px;
+    background-color: rgb(246, 52, 246);
+    color: white;
+    border: white solid 2px;
+    border-radius: 7px;
+    font-size:small;
 }

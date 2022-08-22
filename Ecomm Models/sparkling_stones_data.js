@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
-const sequelize = require('../util/Database');
+const sequelize = require('../util/database');
 const sparkling_stones_data = sequelize.define('sparkling_stones_data', {
-  s_no: {
+  id: {
     type: Sequelize.INTEGER,
     allowNull: false,
     primaryKey: true,

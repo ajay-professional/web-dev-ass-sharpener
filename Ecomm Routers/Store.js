@@ -10,6 +10,8 @@ router.delete('/delFromDatabase/:dat', productsController.deleteProduct);
 
 router.post('/grandTotal/grand', productsController.addGrandTotalInDatabase);
 
+router.get('/orderDet', productsController.orderDet);
+
 router.post('/addProdDetailsInDatabase', productsController.addProdDetailsInDatabase);
 
 

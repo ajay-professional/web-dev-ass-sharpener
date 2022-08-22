@@ -53,6 +53,11 @@ window.addEventListener("DOMContentLoaded", () => {
     axios.get('http://localhost:6999/grandTotal').then((data) => {
         console.log(data.data[data.data.length - 1].grandTotal);
         document.getElementById('tottext').value = data.data[data.data.length - 1].grandTotal;
+        let t1 = (document.getElementById('tottext').value).slice(3);
+        b = parseFloat(t1.slice(0, t1.length - 2));
+        if (b !== 0 && b !== null) {
+            min = 'axios';
+        }
     }).catch(err => {
         console.log(err);
     });
@@ -144,9 +149,10 @@ function addToastNotification(e) {
     } else if (repsame == false && repunique == false) {
         a = parseFloat(detprice.slice(3));
         console.log(a)
-        b = a * count;
-        productPrice = 'Rs.' + `${b}`;
-        grandTotal = `${productPrice}` + '/-';
+        let pp = a * count;
+        b = b + pp;
+        productPrice = 'Rs.' + `${pp}`;
+        grandTotal = 'Rs.' + `${b}` + '/-';
         console.log(productPrice);
         obj = {
             productName,
@@ -206,14 +212,14 @@ function printOnCart(dat) {
             let obj2 = {
                 grandTotal: grandTotal
             };
-            if (grandTotal === 'Rs.0/-') {
-                axios.delete('http://localhost:6999/delFromGrandTotal').then((response) => {
-                    console.log('Successful axios delete');
-                }).catch((err) => {
-                    document.body.innerHTML = document.body.innerHTML + "<h4>Something went wrong.</h4>";
-                    console.log(err);
-                });
-            }
+            // if (grandTotal === 'Rs.0/-') {
+            //     axios.delete('http://localhost:6999/delFromGrandTotal').then((response) => {
+            //         console.log('Successful axios delete');
+            //     }).catch((err) => {
+            //         document.body.innerHTML = document.body.innerHTML + "<h4>Something went wrong.</h4>";
+            //         console.log(err);
+            //     });
+            // }
             axios.post('http://localhost:6999/grandTotal/grand', obj2).then((response) => {
                 console.log(response);
                 console.log('Success');
@@ -242,7 +248,35 @@ cartOpen.addEventListener('click', () => {
     popupcont.classList.toggle('active');
 });
 
+const ordersOpen = document.getElementById('orders');
+const popupcont2 = document.getElementById('odr-id-container');
+ordersOpen.addEventListener('click', () => {
+    popupcont2.classList.toggle('active2');
+});
 
+const pagbtn = document.getElementsByClassName('pag');
+for (let i = 0; i < pagbtn.length; i++) {
+    pagbtn[i].addEventListener('click', () => {
+        pagbtn[i].classList.add('act');
+    })
+}
+
+// document.getElementById('orderdetails').addEventListener('click', ()=>{
+//     axios.get('http://localhost:6999/orderDet').then((response) => {
+//         console.log(response);
+//         const cont = document.getElementById('container');
+//         const dev = document.createElement('p');
+//         dev.classList.add('toas');
+//         dev.innerHTML = `<p>Order sucessfully placed with order id = ${response.orderid}</p>`;
+//         cont.appendChild(dev);
+//         setTimeout(() => {
+//             dev.remove();
+//         }, 3000);
+//     }).catch(err => {
+//         console.log(err);
+//         console.log('Error in grand total of axios');
+//     });
+// });
 
 
 
