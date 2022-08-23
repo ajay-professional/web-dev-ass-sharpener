@@ -24,8 +24,7 @@
                 <a class="nav-link" href="#">Testimonials</a>
             </li>
             <li class="nav-item">
-                <button id="signup" style="background-color:blue; border:1px black solid; border-radius:5px;">SIGN
-                    UP</button>
+                <button id="signup" style="background-color:blue; border:1px black solid; border-radius:5px;color:white;">SIGN UP</button>
             </li>
         </ul>
         <h2 style="color:blue;padding-right:40px;">Expense Tracker</h2>
@@ -33,25 +32,26 @@
     <div id="signup-id-container" class="signup-class">
         <h1>Create Account</h1>
         <form action="" method="GET" id="signUpForm">
-            <label for="username">Name:</label><br>
-            <input type="text" id="username" name="username" /><br />
-            <label for="email">Email:</label><br>
-            <input type="email" id="email" name="email" /><br />
-            <label for="phone">Phone Number:</label><br>
-            <input type="tel" id="phone" name="phone" /><br />
-            <label for="password">Password:</label><br>
-            <input type="password" id="pwrd" name="password" /><br />
-            <input type="submit" id="btn-signup" style="color:black;background-color:blue;border:1px black solid;"
-                value="Sign Up" /><br>
-            <small>Already have an account?<a href="">Sign In</a></small>
+                <label for="username">Name:</label><br>
+                <input type="text" id="username" name="username" size="30" autofocus required /><br />
+                <label for="email">Email:</label><br>
+                <input type="email" id="email" name="email" size="30" required /><br />
+                <label for="phone">Phone Number:</label><br>
+                <input type="tel" id="phone" name="phone" size="30"  required /><br />
+                <label for="password">Password:</label><br>
+                <input type="password" id="pwrd" name="password" size="30" min="6"  required/><br />
+                <input type="submit" id="btn-signup" style="color:white;background-color:blue;border:1px white solid;border-radius:5px;" value="Sign Up" /><br>
+                <small>Already have an account?<a href="">Sign In</a></small>
         </form>
+        <div id="signupnotice">
+
+        </div>
     </div>
     <div id="signup-dash">
         <legend>
             <h1 style="font-size:50px;">Track your expenses</h1>
             <p style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">Sign up today into the best
-                Expense
-                Tracker site and manage all your expenses</p>
+                Expense Tracker site and manage all your expenses</p>
         </legend>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"></script>

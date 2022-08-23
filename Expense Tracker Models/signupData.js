@@ -1,10 +1,10 @@
 const Sequelize = require('sequelize');
 
-const sequel = require('../util/database');
-const sequelize = sequel.second;
+const sequelize = require('../util/database');
+
 const SignUp = sequelize.define('signup', {
     username: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
         allowNull: false,
     },
     email: {
@@ -17,7 +17,7 @@ const SignUp = sequelize.define('signup', {
         allowNull: false
     },
     password: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
         allowNull: false
     }
 });
