@@ -1,6 +1,6 @@
 .signup-class {
     position: relative;
-    background-color: #e9dcdc;
+    background-color:rgb(232, 223, 223);;
     z-index: 2;
     color: blue;
     text-align: center;
@@ -12,6 +12,22 @@
 }
 
 .signup-class.signupActive {
+    display: block;
+}
+
+.login-class {
+    position: relative;
+    background-color:rgb(232, 223, 223);
+    z-index: 4;
+    color: blue;
+    text-align: center;
+    display: none;
+    width: 100%;
+    height: 550px;
+    border: 1px black solid;
+    padding-top: 50px;
+}
+.login-class.loginActive {
     display: block;
 }
 

@@ -22,9 +22,14 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Testimonials</a>
-            </li>
+            </li><br/>
             <li class="nav-item">
                 <button id="signup" style="background-color:blue; border:1px black solid; border-radius:5px;color:white;">SIGN UP</button>
+                <br/>
+            </li>
+            <li class="nav-item">
+                <button id="loginto" style="background-color:blue; border:1px black solid; border-radius:5px;color:white;">LOG IN</button>
+                <br/>
             </li>
         </ul>
         <h2 style="color:blue;padding-right:40px;">Expense Tracker</h2>
@@ -41,9 +46,23 @@
                 <label for="password">Password:</label><br>
                 <input type="password" id="pwrd" name="password" size="30" min="6"  required/><br />
                 <input type="submit" id="btn-signup" style="color:white;background-color:blue;border:1px white solid;border-radius:5px;" value="Sign Up" /><br>
-                <small>Already have an account?<a href="">Sign In</a></small>
+                <small>Already have an account? Press Log In button above</small>
         </form>
         <div id="signupnotice">
+
+        </div>
+    </div>
+    <div id="login-id-container" class="login-class">
+        <h1>Welcome Back</h1>
+        <form action="" method="GET" id="loginForm">
+                <label for="email2">Email:</label><br>
+                <input type="email" id="email2" name="email2" size="30" required /><br />
+                <label for="password2">Password:</label><br>
+                <input type="password" id="pwrd2" name="password2" size="30" min="6"  required/><br />
+                <input type="submit" id="btn-login" style="color:white;background-color:blue;border:1px white solid;border-radius:5px;" value="Log In" /><br>
+                <small>Don't have an account?Press Sign Upbutton above</a></small>
+        </form>
+        <div id="loginnotice">
 
         </div>
     </div>

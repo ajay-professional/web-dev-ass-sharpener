@@ -1,7 +1,5 @@
 const SignUp = require('../Expense Tracker Models/signupData.js');
 
-let already_present;
-
 exports.addSignUpDetailsInDatabase = (req, res, next) => {
     const username = req.body.username;
     const email = req.body.email;
@@ -12,22 +10,40 @@ exports.addSignUpDetailsInDatabase = (req, res, next) => {
         email,
         phone,
         password
-    }).then(result => {
+    }).then(() => {
         console.log('Added Product to the database');
-        already_present=false;
         res.send("Successfully signed up");
     }).catch(err => {
         console.log(err);
         console.log('Error in controller');
-        already_present=true;
         res.send('This user is already present. Please Login !');
     });
 };
-exports.signupnotice = (req, res, next) => {
-    if(already_present==true){
-        res.send('This user is already present !');
-    }
-    else{
-        res.send("Successfully signed up");
-    }
+
+exports.loginByUser = (req, res, next) => {
+    const email2 = req.body.email2;
+    const password2 = req.body.password2;
+    SignUp.findByPk(email2).then((user) => {
+        if (user.password == password2) {
+            res.send({
+                username: `${user.username}`,
+                email: `${user.email}`,
+                phone: `${user.phone}`,
+                password: `${user.password}`,
+                status:"Login Successful"
+            });
+        }else {
+            res.send({
+                status:"Incorrect password !"
+            });
+        }
+    }).catch(err => {
+        console.log(err);
+        console.log('Error in controller login');
+        res.send({
+            status:"This user is not registered. Please sign up first !"
+        });
+    });
 };
+
+

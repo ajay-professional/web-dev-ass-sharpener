@@ -20,6 +20,7 @@ const SignUp = sequelize.define('signup', {
         type: Sequelize.STRING,
         allowNull: false
     }
+    
 });
 
 module.exports = SignUp;

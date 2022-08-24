@@ -4,6 +4,15 @@ signbtn.addEventListener('click', () => {
     signupcont.classList.toggle('signupActive');
 });
 
+const loginbtn = document.getElementById('loginto');
+const logincont = document.getElementById('login-id-container');
+loginbtn.addEventListener('click', () => {
+    logincont.classList.toggle('loginActive');
+});
+
+function ancSignin(){
+    logincont.classList.toggle('loginActive');
+};
 
 const formSignup = document.getElementById('signUpForm');
 formSignup.addEventListener('submit', (e) => {
@@ -21,21 +30,28 @@ formSignup.addEventListener('submit', (e) => {
     axios.post('http://localhost:5739/addSignUpDetailsInDatabase', obj).then((response) => {
         console.log(response);
         console.log('Successfully added signup details');
-        axios.get('http://localhost:5739/signupnotice').then((data) => {
-            console.log(data.data);
-            // const cont = document.getElementById('signupnotice');
-            // const dev = document.createElement('p');
-            // dev.innerHTML= `<b><u>${data.data}</u></b>`;
-            // cont.appendChild(dev);
-            // setTimeout(() => {
-            //     dev.remove();
-            // }, 8000);
-            alert(data.data);
-        }).catch(err => {
-            console.log(err);
-        });
+        alert(response.data);
     }).catch(err => {
         console.log(err);
         console.log('Failed to add signup details');
+    });
+});
+
+const formLogin = document.getElementById('loginForm');
+formLogin.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const email2 = e.target.email2.value;
+    const password2 = e.target.password2.value;
+    const obj2 = {
+        email2,
+        password2
+    }
+    axios.post('http://localhost:5739/loginByUser', obj2).then((response) => {
+        console.log(response.data.status);
+        console.log('Successfully added login details');
+        alert(response.data.status);
+    }).catch(err => {
+        console.log(err);
+        console.log('Failed to add login details');
     });
 });
