@@ -40,3 +40,31 @@ button {
     top:260px;
     left:260px; 
 }
+
+#login-dash {
+    position: absolute;
+    top:260px;
+    left:260px; 
+}
+
+.dailyexpenses-class {
+    position: relative;
+    background-color:rgb(232, 223, 223);
+    color: black;
+    text-align: center;
+    display: block;
+    width: 100%;
+    height: 550px;
+    border: 1px black solid;
+    padding-top: 50px;
+}
+
+#myform{
+    position:relative;
+    top:30px;
+    display:inline-flexbox;
+}
+#detailsOnScreen{
+    position:relative;
+    top:30px;
+}
