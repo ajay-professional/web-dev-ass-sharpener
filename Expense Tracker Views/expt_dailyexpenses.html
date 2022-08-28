@@ -35,12 +35,12 @@
         <h1
             style="text-align:center;font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; margin-top: -40px;">
             Daily Expenses</h1>
-        <form id="myform">
+        <form id="myform" action="" method="POST">
             <fieldset>
                 <label for="number">
                     <h5 style="font-family:Georgia, 'Times New Roman', Times, serif;">Choose expense amount:</h5>
                 </label>
-                <input title="Enter amount spent" type="number" id="number" name="expenseamount" required>
+                <input title="Enter amount spent" type="number" id="number" name="expenseAmount" required>
                 <label for="text">
                     <h5 style="font-family:Georgia, 'Times New Roman', Times, serif;">Choose description:</h5>
                 </label>
@@ -48,7 +48,7 @@
                 <label for="list">
                     <h5 style="font-family:Georgia, 'Times New Roman', Times, serif;">Choose a category:</h5>
                 </label>
-                <input title="category of item/service" id="list" list="category" name="catdetails" required>
+                <input title="category of item/service" id="list" list="category" name="categoryDetail" required>
                 <datalist id="category">
                     <option value="Petrol/Gas">
                     <option value="Junk food">
@@ -87,19 +87,18 @@
                 <!--<button  onclick="clearDetails()">Reset</button>-->
             </fieldset>
             <!--<input type="button" id="btn-expenses" value="Add Expenses">-->
-            <div id="detailsOnScreen">
-                <h5 style="text-align: left;margin-left:15px;font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;"><ins>Day to Day Expenses:-</ins></h5>
-                <ol>
-                    <div id="div-id" class="div-class"></div>
-                </ol>
-            </div>
         </form>
+        <div id="detailsOnScreen">
+            <h5 style="text-align: left;margin-left:15px;font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;"><ins>Day to Day Expenses:-</ins></h5>
+            <ol>
+                <div id="div-id" class="div-class"></div>
+            </ol>
+        </div>
         <div id="loginnotice">
 
         </div>
     </div>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.0.0-alpha.1/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"></script>
     <script src="../Expense Tracker Public/expt_dailyexpenses.js"></script>
 </body>
 

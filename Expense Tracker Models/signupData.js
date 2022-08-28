@@ -10,7 +10,7 @@ const SignUp = sequelize.define('signup', {
     email: {
         type: Sequelize.STRING,
         allowNull: false,
-        primaryKey: true,
+        primaryKey: true
     },
     phone: {
         type: Sequelize.STRING,
@@ -19,8 +19,7 @@ const SignUp = sequelize.define('signup', {
     password: {
         type: Sequelize.STRING,
         allowNull: false
-    }
-    
+    }  
 });
 
 module.exports = SignUp;

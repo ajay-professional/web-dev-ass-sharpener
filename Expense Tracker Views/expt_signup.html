@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker</title>
+    <link rel="stylesheet" href="../Expense Tracker Public/expt_main.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+</head>
+
+<body>
+    <nav class="navbar navbar-dark bg-dark">
+        <ul class="nav justify-content-end">
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Features</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Testimonials</a>
+            </li><br/>
+            <li class="nav-item">
+                <button id="signup" style="background-color:blue; border:1px black solid; border-radius:5px;color:white;">SIGN UP</button>
+            </li>
+            <li class="nav-item">
+                <button id="loginto" style="background-color:blue; border:1px black solid; border-radius:5px;color:white;">LOG IN</button>
+            </li>
+        </ul>
+        <h2 style="color:blue;padding-right:40px;">Expense Tracker</h2>
+    </nav>
+    <div id="signup-id-container" class="signup-class">
+        <h1>Create Account</h1>
+        <form action="" method="GET" id="signUpForm">
+                <label for="username">Name:</label><br>
+                <input type="text" id="username" name="username" size="30" autofocus required /><br />
+                <label for="email">Email:</label><br>
+                <input type="email" id="email" name="email" size="30" required /><br />
+                <label for="phone">Phone Number:</label><br>
+                <input type="tel" id="phone" name="phone" size="30"  required /><br />
+                <label for="password">Password:</label><br>
+                <input type="password" id="pwrd" name="password" size="30" min="6"  required/><br />
+                <input type="submit" id="btn-signup" style="color:white;background-color:blue;border:1px white solid;border-radius:5px;" value="Sign Up" /><br>
+                <small>Already have an account?<a href="C:\Users\gulshan\Desktop\Expense Tracker Views\expt_login.html">Login here</a></small>
+        </form>
+        <div id="signupnotice">
+
+        </div>
+    </div>
+    <div id="signup-dash">
+        <legend>
+            <h1 style="font-size:50px;">Track your expenses</h1>
+            <p style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">Sign up today into the best
+                Expense Tracker site and manage all your expenses</p>
+        </legend>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"></script>
+    <script src="../Expense Tracker Public/expt_signup.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
