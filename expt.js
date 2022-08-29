@@ -8,6 +8,8 @@ const sequelize = require('./util/database');
 
 const SignUp = require('./Expense Tracker Models/signupData.js');
 
+const Order = require('./Expense Tracker Models/orders.js');
+
 const DailyExpenses= require('./Expense Tracker Models/dailyExpensesData.js');
 
 const expRoutes = require('./Expense Tracker Routes/routesExpense.js');
@@ -24,6 +26,9 @@ app.use(expRoutes);
 
 DailyExpenses.belongsTo(SignUp);
 SignUp.hasMany(DailyExpenses);
+
+SignUp.hasMany(Order);
+Order.belongsTo(SignUp);
 
 sequelize.sync({ force: true }).then(result => {
     console.log(result);

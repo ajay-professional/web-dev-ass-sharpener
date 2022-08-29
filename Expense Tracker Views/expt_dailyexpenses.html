@@ -11,30 +11,27 @@
         integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 </head>
 
-<body>
+<body id="dailyExpenseId">
     <nav class="navbar navbar-dark bg-dark">
         <ul class="nav justify-content-end">
             <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                <a class="nav-link active" aria-current="page" href="C:\Users\gulshan\Desktop\Expense Tracker Views\expt_home.html">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Features</a>
+                <a class="nav-link" href="#">Your Expenses</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Testimonials</a>
+                <a class="nav-link" href="#">Dashboard</a>
             </li>
             <li class="nav-item">
-                <button id="loginto"
-                    style="background-color:blue; border:1px black solid; border-radius:5px;color:white;">LOG
-                    IN</button>
+                <button id="logoutFrom" style="background-color:blue; border:1px black solid; border-radius:5px;color:white;">LOG OUT</button>
             </li>
         </ul>
+        <button id="buypremium" style="background-color:blue; border:1px black solid; border-radius:5px;color:white;margin-left:370px;">Buy Premium Membership?</button>
         <h2 style="color:blue;padding-right:40px;">Expense Tracker</h2>
     </nav>
     <div id="dailyexpenses-id-container" class="dailyexpenses-class">
-        <h1
-            style="text-align:center;font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; margin-top: -40px;">
-            Daily Expenses</h1>
+        <h1 style="text-align:center;font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; margin-top: -40px;">Daily Expenses</h1>
         <form id="myform" action="" method="POST">
             <fieldset>
                 <label for="number">
@@ -81,12 +78,9 @@
                     <option value="Maintenance">
                     <option value="Others">
                 </datalist><br/>
-                <!--<button id="expense">Add Expenses</button>-->
                 <input type="submit" id="btn" name="Add expenses" value="Add Expenses" style="width: 110px;margin-right: 10px;margin-top:15px;color:white;background-color:blue;border:1px white solid;border-radius:5px;">
                 <input type="reset" id="reset" name="Reset" value="Reset" style="width: 110px;margin-left: 20px;margin-top:15px;color:white;background-color:blue;border:1px white solid;border-radius:5px;" title="clear all values">
-                <!--<button  onclick="clearDetails()">Reset</button>-->
             </fieldset>
-            <!--<input type="button" id="btn-expenses" value="Add Expenses">-->
         </form>
         <div id="detailsOnScreen">
             <h5 style="text-align: left;margin-left:15px;font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;"><ins>Day to Day Expenses:-</ins></h5>
@@ -94,12 +88,13 @@
                 <div id="div-id" class="div-class"></div>
             </ol>
         </div>
-        <div id="loginnotice">
+        <div id="dailyexpensesnotice">
 
         </div>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"></script>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
     <script src="../Expense Tracker Public/expt_dailyexpenses.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"></script>
 </body>
 
 </html>

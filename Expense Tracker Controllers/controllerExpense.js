@@ -10,7 +10,6 @@ exports.addSignUpDetailsInDatabase = (req, res, next) => {
     const saltRounds = 10;
     bcrypt.genSalt(saltRounds, function (err, salt) {
         bcrypt.hash(password, salt, function (err, hash) {
-            // Store hash in your password DB.
             if (err) {
                 console.log('Unable to create new user');
                 return res.json({ message: 'Unable to create new user' });
@@ -19,7 +18,8 @@ exports.addSignUpDetailsInDatabase = (req, res, next) => {
                 username,
                 email,
                 phone,
-                password: hash
+                password: hash,
+                ispremiumuser:false
             }).then(() => {
                 console.log('Added Product to the database');
                 res.json({
@@ -46,6 +46,9 @@ exports.loginByUser = (req, res, next) => {
                 res.json({ success: false, message: 'Something went wrong' });
             }
             if (result) {
+                if(user.ispremiumuser==true){
+                    document.body.style.backgroundColor='gray';
+                }
                 var token = jwt.sign({username:user.username, email:user.email}, process.env.SECRET_KEY, {
                      expiresIn: "2d"});
                 res.json({status: "Login Successful", success:true, userData:{username:user.username, email:user.email}, token});
@@ -97,11 +100,6 @@ exports.authenticateUser = (req, res, next) => {
         const userDet = jwt.verify(token, process.env.SECRET_KEY);
         console.log(JSON.stringify(userDet));
         mymail=userDet.email;
-        // SignUp.findByPk(userDet.email).then(user => {
-        //     console.log(JSON.stringify(user));
-        //     req.user = user;
-        //     next();
-        // }).catch(err => { throw new Error(err)});
         next();
       } catch(err) {
         console.log(err);
@@ -119,11 +117,6 @@ exports.domDailyExpenses = (req, res, next) => {
         console.log(err);
     });
 };
-// {
-//     where: {
-//         signupEmail: email2
-//     }
-// }
 exports.deleteExpense = (req, res, next) => {
     const expenseid = req.params.dat;
     DailyExpenses.destroy({

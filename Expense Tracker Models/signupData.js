@@ -19,7 +19,11 @@ const SignUp = sequelize.define('signup', {
     password: {
         type: Sequelize.STRING,
         allowNull: false
-    }  
+    },
+    ispremiumuser:{
+        type: Sequelize.BOOLEAN,
+        allowNull:false
+    } 
 });
 
 module.exports = SignUp;

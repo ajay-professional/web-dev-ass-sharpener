@@ -25,7 +25,7 @@ formLogin.addEventListener('submit', (e) => {
         sessionStorage.setItem('token', response.data.token);
         localStorage.setItem('user', JSON.stringify(response.data.userData));
         //window.location.href = "../Expense Tracker Views/expt_dailyexpenses.html"
-        window.location.href="file:///C:/Users/gulshan/Desktop/Expense%20Tracker%20Views/expt_dailyexpenses.html";
+        window.location.href="file:///C:/Users/gulshan/Desktop/Expense%20Tracker%20Views/expt_home.html#";
         console.log(response);
         console.log(response.data.status);
         console.log('Successfully added login details');
