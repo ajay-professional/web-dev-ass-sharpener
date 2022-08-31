@@ -68,6 +68,27 @@ button {
     left:230px;
 }
 
+.forgotPwd-cls{
+   position: relative;
+   top:-200px;
+   left:335px;
+   width:600px;
+   height:200px;
+   background-color:rgb(228, 214, 214);
+   z-index:3;
+   text-align: center;
+   padding-top: 30px;
+   display:none;
+   border:1px solid black;
+}
+#pwdForm{
+    position: relative;
+    left:105px;
+}
+.forgotPwd-cls.pwd-active{
+    display: flex;
+}
+
 #myform{
     position:relative;
     top:30px;

@@ -10,7 +10,16 @@ signbtn.addEventListener('click', () => {
     window.location.replace("file:///C:/Users/gulshan/Desktop/Expense%20Tracker%20Views/expt_signup.html");
 });
 
+const pwdBtn = document.getElementById('forgotPassword');
+const forgotPwdCont = document.getElementById('forgotPwd-id');
+pwdBtn.addEventListener('click', () => {
+    forgotPwdCont.classList.add('pwd-active');
+});
 
+const closeBtn = document.getElementById('closePwdCont');
+closeBtn.addEventListener('click', () => {
+    forgotPwdCont.classList.remove('pwd-active');
+});
 
 const formLogin = document.getElementById('loginForm');
 formLogin.addEventListener('submit', (e) => {
@@ -44,4 +53,13 @@ formLogin.addEventListener('submit', (e) => {
         console.log('Failed to add login details');
     });
 });
+const pwdForm=document.getElementById('pwdForm');
+pwdForm.addEventListener('submit', (e)=>{
+    e.preventDefault();
+    let userEmail=e.target.askmail2.value;
+    let objt={
+        userEmail
+    }
+    axios.post('http://localhost:5739/password/forgotpassword ', objt).then().catch();
 
+})
