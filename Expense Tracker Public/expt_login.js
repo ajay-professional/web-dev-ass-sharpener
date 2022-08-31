@@ -24,17 +24,21 @@ formLogin.addEventListener('submit', (e) => {
     axios.post('http://localhost:5739/loginByUser', obj2).then((response) => {
         sessionStorage.setItem('token', response.data.token);
         localStorage.setItem('user', JSON.stringify(response.data.userData));
-        //window.location.href = "../Expense Tracker Views/expt_dailyexpenses.html"
-        window.location.href="file:///C:/Users/gulshan/Desktop/Expense%20Tracker%20Views/expt_home.html#";
+        if (response.data.userData.ispremiumuser === true) {
+            window.location.href = "../Expense Tracker Views/expt_home_premium.html"
+        }
+        else {
+            window.location.href = "file:///C:/Users/gulshan/Desktop/Expense%20Tracker%20Views/expt_home.html#";
+        }
         console.log(response);
         console.log(response.data.status);
         console.log('Successfully added login details');
     }).catch(err => {
         console.log(err);
-        if(err.response.status===401){
+        if (err.response.status === 401) {
             alert("Incorrect password !");
         }
-        if(err.response.status===404){
+        if (err.response.status === 404) {
             alert("This user is not registered. Please sign up first !");
         }
         console.log('Failed to add login details');

@@ -1,5 +1,10 @@
 const token = sessionStorage.getItem('token');
-document.getElementById('buypremium').onclick = function (e) {
+const logoutbtn = document.getElementById('logoutFrom');
+let newDesc; let newEditDesc;
+logoutbtn.addEventListener('click', () => {
+    window.location.replace("file:///C:/Users/gulshan/Desktop/Expense%20Tracker%20Views/expt_login.html");
+});
+document.getElementById('buypremium').addEventListener('click', function (e) {
     try {
         axios.get('http://localhost:5739/purchase/premiummembership', { headers: { "Authorization": token } }).then((response) => {
             console.log(response);
@@ -21,8 +26,13 @@ document.getElementById('buypremium').onclick = function (e) {
                         order_id: options.order_id,
                         payment_id: response.razorpay_payment_id,
                     }, { headers: { "Authorization": token } }).then(() => {
-                        alert('You are a Premium User Now')
-                        document.getElementById('dailyExpenseId').style.background="red";
+                        const paynotice = document.createElement('p');
+                        paynotice.innerHTML = '<h3 style="color:green;"><i><ins>TRANSACTION SUCCESSFUL! You are a Premium User Now !</ins></i></h3>';
+                        document.getElementById('dailyexpensesnotice').appendChild(paynotice);
+                        setTimeout(() => {
+                            paynotice.remove();
+                            window.location.replace("file:///C:/Users/gulshan/Desktop/Expense%20Tracker%20Views/expt_home_premium.html");
+                        }, 3000);
                     }).catch(() => {
                         alert('Something went wrong. Try Again!!!');
                         const paynotice = document.createElement('p');
@@ -66,12 +76,6 @@ document.getElementById('buypremium').onclick = function (e) {
             paynotice.remove();
         }, 6000);
     }
-}
-
-
-const logoutbtn = document.getElementById('logoutFrom');
-logoutbtn.addEventListener('click', () => {
-    window.location.replace("file:///C:/Users/gulshan/Desktop/Expense%20Tracker%20Views/expt_signup.html");
 });
 
 var forms = document.getElementById("myform");
@@ -81,15 +85,28 @@ forms.addEventListener('submit', (e) => {
     let expenseAmount = e.target.expenseAmount.value;
     let description = e.target.description.value;
     let categoryDetail = e.target.categoryDetail.value;
-
+    let expenseAmountInt=parseFloat(expenseAmount);
+    let initialTotalExpense;
+    if(document.getElementById('totalexp').value==""){
+        initialTotalExpense=0;
+    }else{
+        let s=(document.getElementById('totalexp').value).slice(1);
+        s=s.slice(0, s.length-2);
+        initialTotalExpense=parseFloat(s);
+        console.log(initialTotalExpense);
+    }
+    let finalTotalExpense=initialTotalExpense + expenseAmountInt;
+    console.log(finalTotalExpense);
     let obj3 = {
         expenseAmount,
         description,
-        categoryDetail
+        categoryDetail,
+        finalTotalExpense
     };
     console.log(obj3);
     axios.post('http://localhost:5739/dailyExpensesData', obj3, { headers: { "Authorization": token } }).then((response) => {
         console.log(response);
+        document.getElementById('totalexp').value='₹'+`${finalTotalExpense}`+'/-';
         printDetailsOnScreen(response.data);
     }).catch((err) => {
         document.body.innerHTML = document.body.innerHTML + "<h4>Something went wrong</h4>";
@@ -105,21 +122,47 @@ window.addEventListener("DOMContentLoaded", () => {
             printDetailsOnScreen(response.data[i]);
         }
     }).catch((err) => console.log(err));
+
+    axios.get("http://localhost:5739/domTotalExpenses", { headers: { "Authorization": token } }).then((response) => {
+        console.log('₹'+ `${response.data[0].totalexpense}`+'/-');
+        document.getElementById('totalexp').value='₹'+ `${response.data[0].totalexpense}`+'/-';
+    }).catch((err) => console.log(err));
 });
 
 function printDetailsOnScreen(det) {
+    if(det.description.indexOf(" ")!=-1){
+       newDesc=det.description.replaceAll(" ","#");
+    }else{
+        newDesc=det.description;
+    }
     let parentNode = document.getElementById('div-id');
-    parentNode.innerHTML = parentNode.innerHTML + `<li id='${det.id}' style="text-align:left;"><pre style="font-size:15px;"><b>Amount:</b> <i>${det.expenseAmount}</i>,        <b>Description:</b><i style="position:relative;width:15px;height:2px;">${det.description}</i>,        <b>Category:</b><i>${det.categoryDetail}</i>        <button id="del" onclick=deleteUser('${det.id}') style="background-color:blue; border:1px black solid; border-radius:5px;color:white;">Delete expense</button>  <button id="edit" onClick=editUserDetails('${det.expenseAmount}','${det.description}','${det.categoryDetail}','${det.id}') style="background-color:blue; border:1px black solid; border-radius:5px;color:white;">Edit expense</button>.</pre></li>`
+    parentNode.innerHTML = parentNode.innerHTML + `<li id='${det.id}-${det.expenseAmount}' style="text-align:left;"><pre style="font-size:15px;"><b>Amount:</b> <i>₹${det.expenseAmount}/-</i>,        <b>Description:</b><i style="position:relative;width:15px;height:2px;">${det.description}</i>,        <b>Category:</b><i>${det.categoryDetail}</i>        <button id="del" onclick=deleteUser('${det.id}-${det.expenseAmount}') style="background-color:blue; border:1px black solid; border-radius:5px;color:white;">Delete expense</button>  <button id="edit" onclick=editUserDetails('${det.expenseAmount}','${newDesc}','${det.categoryDetail}','${det.id}-${det.expenseAmount}') style="background-color:blue; border:1px black solid; border-radius:5px;color:white;">Edit expense</button>.</pre></li>`
 }
-function editUserDetails(eval, dval, cvalue, ivalue) {
+function editUserDetails(eval, dval, cvalue, ivalue){
+    if(dval.indexOf("#")!=-1){
+        newEditDesc=dval.replaceAll("#"," ");
+     }else{
+        newEditDesc=dval;
+     }
     document.getElementById('number').value = eval;
-    document.getElementById('text').value = dval;
+    document.getElementById('text').value = newEditDesc;
     document.getElementById('list').value = cvalue;
     deleteUser(ivalue);
 }
 function deleteUser(ivalue) {
+    console.log(ivalue);
     const token = sessionStorage.getItem('token');
-    axios.delete(`http://localhost:5739/deleteExpenseFromDatabase/${ivalue}`, { headers: { "Authorization": token } }).then((response) => console.log("Successful" + response)).catch((err) => {
+    let s1=(document.getElementById('totalexp').value).slice(1);
+    s1=s1.slice(0, s1.length-2);
+    let initialTotalExpense=parseFloat(s1);
+    let arrDelVal=ivalue.split('-');
+    const expenseid=arrDelVal[0];
+    const expenseamount=parseFloat(arrDelVal[1]);
+    console.log(expenseamount);
+    let finalTotalExpense=initialTotalExpense - expenseamount;
+    let ivalue2=`${expenseid}`+`-${finalTotalExpense}`;
+    document.getElementById('totalexp').value='₹'+`${finalTotalExpense}`+'/-';
+    axios.delete(`http://localhost:5739/deleteExpenseFromDatabase/${ivalue2}`, { headers: { "Authorization": token } }).then((response) => console.log("Successful" + response)).catch((err) => {
         document.body.innerHTML = document.body.innerHTML + "<h4>Something went wrong</h4>";
         console.log(err);
     });

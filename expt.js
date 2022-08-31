@@ -12,6 +12,8 @@ const Order = require('./Expense Tracker Models/orders.js');
 
 const DailyExpenses= require('./Expense Tracker Models/dailyExpensesData.js');
 
+const totalExpenseData= require('./Expense Tracker Models/totalExpenseData.js');
+
 const expRoutes = require('./Expense Tracker Routes/routesExpense.js');
 
 const cors = require('cors');
@@ -29,6 +31,9 @@ SignUp.hasMany(DailyExpenses);
 
 SignUp.hasMany(Order);
 Order.belongsTo(SignUp);
+
+SignUp.hasOne(totalExpenseData);
+totalExpenseData.belongsTo(SignUp);
 
 sequelize.sync({ force: true }).then(result => {
     console.log(result);

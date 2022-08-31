@@ -15,7 +15,7 @@
     <nav class="navbar navbar-dark bg-dark">
         <ul class="nav justify-content-end">
             <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="C:\Users\gulshan\Desktop\Expense Tracker Views\expt_home.html">Home</a>
+                <a class="nav-link active" aria-current="page" href="C:\Users\gulshan\Desktop\Expense Tracker Views\expt_home_premium.html">Home</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Your Expenses</a>
@@ -24,13 +24,15 @@
                 <a class="nav-link" href="#">Dashboard</a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="C:\Users\gulshan\Desktop\Expense Tracker Views\expt_leaderboard_premium.html">Leader Board</a>
+            </li>
+            <li class="nav-item">
                 <button id="logoutFrom" style="background-color:blue; border:1px black solid; border-radius:5px;color:white;">LOG OUT</button>
             </li>
         </ul>
-        <button id="buypremium" style="background-color:blue; border:1px black solid; border-radius:5px;color:white;margin-left:370px;">Buy Premium Membership?</button>
-        <h2 style="color:blue;padding-right:40px;">Expense Tracker</h2>
+        <h3 style="color:blue;padding-right:40px;"><i>Expense Tracker <span style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">Premium</span></i></h3>
     </nav>
-    <div id="dailyexpenses-id-container" class="dailyexpenses-class">
+    <div id="dailyexpenses-id-container" class="dailyexpenses-class" style="background-color:rgb(206, 197, 197);">
         <h1 style="text-align:center;font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; margin-top: -40px;">Daily Expenses</h1>
         <form id="myform" action="" method="POST">
             <fieldset>
@@ -92,8 +94,8 @@
 
         </div>
     </div>
-    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-    <script src="../Expense Tracker Public/expt_dailyexpenses.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"></script>
+    <script src="../Expense Tracker Public/expt_dailyexpenses_premium.js"></script>
 </body>
+
 </html>

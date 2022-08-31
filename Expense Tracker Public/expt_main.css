@@ -52,7 +52,7 @@ button {
 
 .dailyexpenses-class {
     position: relative;
-    background-color:rgb(232, 223, 223);
+    background-color:white;
     color: black;
     text-align: center;
     display: block;
@@ -60,6 +60,12 @@ button {
     height: 550px;
     border: 1px black solid;
     padding-top: 50px;
+}
+
+#leaderboard{
+    position:relative;
+    top:40px;
+    left:230px;
 }
 
 #myform{

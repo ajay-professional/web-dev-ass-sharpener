@@ -1,6 +1,8 @@
 const SignUp = require('../Expense Tracker Models/signupData.js');
 const DailyExpenses = require('../Expense Tracker Models/dailyExpensesData.js');
+const totalExpenseData= require('../Expense Tracker Models/totalExpenseData.js');
 let mymail;
+let myusername;
 let dotenv=require('dotenv');
 dotenv.config();
 var jwt = require('jsonwebtoken');
@@ -46,12 +48,9 @@ exports.loginByUser = (req, res, next) => {
                 res.json({ success: false, message: 'Something went wrong' });
             }
             if (result) {
-                if(user.ispremiumuser==true){
-                    document.body.style.backgroundColor='gray';
-                }
                 var token = jwt.sign({username:user.username, email:user.email}, process.env.SECRET_KEY, {
                      expiresIn: "2d"});
-                res.json({status: "Login Successful", success:true, userData:{username:user.username, email:user.email}, token});
+                res.json({status: "Login Successful", success:true, userData:{username:user.username, email:user.email, phone:user.phone, ispremiumuser:user.ispremiumuser}, token});
             } else {
                 console.log('passwords do not match');
                 res.sendStatus(401);
@@ -71,7 +70,8 @@ exports.dailyExpensesData = (req, res, next) => {
     const expenseAmount = req.body.expenseAmount;
     const description = req.body.description;
     const categoryDetail = req.body.categoryDetail;
-    console.log(categoryDetail);
+    const finalTotalExpense=req.body.finalTotalExpense;
+    console.log(finalTotalExpense);
     DailyExpenses.create({
         expenseAmount,
         description,
@@ -81,14 +81,30 @@ exports.dailyExpensesData = (req, res, next) => {
         console.log(response);
         res.json(response);
         console.log('Added dailyexpenses to the database');
-        DailyExpenses.findAll().then((exp)=>{
-            console.log(exp);
-        }).catch((err)=>{
-            console.log('findall error');
-        })
+        totalExpenseData.destroy({
+            where: {
+                signupEmail: mymail
+            }
+        }).then(result => {
+            console.log('DESTROYED & Deleted total expenses');
+            totalExpenseData.create({
+              username:myusername,
+              totalexpense:finalTotalExpense,
+              signupEmail:mymail
+            }).then(result => {
+                console.log(result);
+                console.log('created total expenses table');
+            }).catch(err => {
+                console.log('error in total expense creation');
+                console.log(err)
+            });
+        }).catch(err => {
+            console.log('error in total expense destroy process');
+            console.log(err);
+        });
     }).catch(err => {
         console.log(err);
-        console.log('Error in controller dailyexpenses');
+        console.log('Error in dailyexpenses creation');
     });
 };
 
@@ -99,6 +115,7 @@ exports.authenticateUser = (req, res, next) => {
         console.log(token);
         const userDet = jwt.verify(token, process.env.SECRET_KEY);
         console.log(JSON.stringify(userDet));
+        myusername=userDet.username;
         mymail=userDet.email;
         next();
       } catch(err) {
@@ -117,14 +134,57 @@ exports.domDailyExpenses = (req, res, next) => {
         console.log(err);
     });
 };
+
+exports.domTotalExpenses = (req, res, next) => {
+    totalExpenseData.findAll({ where: { signupEmail: mymail }}).then(totalExpense => {
+        console.log(totalExpense);
+        res.json(totalExpense);
+    }).catch(err => {
+        console.log(err);
+    });
+};
+
+exports.leaderboardUserExpenses= (req, res, next) => {
+    totalExpenseData.findAll().then(totalExpense => {
+        res.json(totalExpense);
+    }).catch(err => {
+        console.log(err);
+    });
+};
+
 exports.deleteExpense = (req, res, next) => {
-    const expenseid = req.params.dat;
+    let delValue = req.params.dat;
+    let arrDelVal=delValue.split('-');
+    const expenseid=parseFloat(arrDelVal[0]);
+    console.log('id is :'+ expenseid);
+    const finalTotalExpense=parseFloat(arrDelVal[1]);
     DailyExpenses.destroy({
         where: {
             id: expenseid
         }
     }).then(result => {
         console.log('DESTROYED & Deleted expense');
+        totalExpenseData.destroy({
+            where: {
+                signupEmail: mymail
+            }
+        }).then(result => {
+            console.log('DESTROYED & Deleted total expenses');
+            totalExpenseData.create({
+              username:myusername,
+              totalexpense:finalTotalExpense,
+              signupEmail:mymail
+            }).then(result => {
+                console.log(result);
+                console.log('created total expenses table');
+            }).catch(err => {
+                console.log('error in total expense creation');
+                console.log(err)
+            });
+        }).catch(err => {
+            console.log('error in total expense destroy process');
+            console.log(err);
+        });
     }).catch(err => console.log(err));
 };
 
