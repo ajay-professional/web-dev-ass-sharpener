@@ -28,7 +28,14 @@ formSignup.addEventListener('submit', (e) => {
     axios.post('http://localhost:5739/addSignUpDetailsInDatabase', obj).then((response) => {
         console.log(response);
         console.log('Successfully added signup details');
-        window.location.replace("file:///C:/Users/gulshan/Desktop/Expense%20Tracker%20Views/expt_login.html");
+        let parEle = document.getElementById('signupnotice');
+        let childEle = document.createElement('p');
+        childEle.innerHTML = '<h3 style="color:green;"><i><ins>Successfully added signup details. Loading to login page....</ins></i></h3>';
+        parEle.appendChild(childEle);
+        setTimeout(() => {
+            childEle.remove();
+            window.location.replace("file:///C:/Users/gulshan/Desktop/Expense%20Tracker%20Views/expt_login.html");
+        }, 3000);
     }).catch(err => {
         console.log(err);
         console.log('Failed to add signup details');

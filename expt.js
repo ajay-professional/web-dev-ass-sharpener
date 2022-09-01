@@ -14,6 +14,8 @@ const DailyExpenses= require('./Expense Tracker Models/dailyExpensesData.js');
 
 const totalExpenseData= require('./Expense Tracker Models/totalExpenseData.js');
 
+const forgotPasswordRequests = require('./Expense Tracker Models/forgotPasswordRequests.js');
+
 const expRoutes = require('./Expense Tracker Routes/routesExpense.js');
 
 const cors = require('cors');
@@ -29,13 +31,16 @@ app.use(expRoutes);
 DailyExpenses.belongsTo(SignUp);
 SignUp.hasMany(DailyExpenses);
 
+SignUp.hasMany(forgotPasswordRequests);
+forgotPasswordRequests.belongsTo(SignUp, { constraints: true, onDelete: 'CASCADE' });
+
 SignUp.hasMany(Order);
 Order.belongsTo(SignUp);
 
 SignUp.hasOne(totalExpenseData);
 totalExpenseData.belongsTo(SignUp);
 
-sequelize.sync({ force: true }).then(result => {
+sequelize.sync().then(result => {
     console.log(result);
     app.listen(5739);
 }).catch(err => console.log(err));

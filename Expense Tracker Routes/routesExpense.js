@@ -13,4 +13,7 @@ router.delete('/deleteExpenseFromDatabase/:dat', signupController.authenticateUs
 router.get('/purchase/premiummembership', signupController.authenticateUser, razorpayController.purchasepremium);
 router.get('/leaderboardUserExpenses', signupController.authenticateUser, signupController.leaderboardUserExpenses);
 router.post('/purchase/updatetransactionstatus', signupController.authenticateUser, razorpayController.updateTransactionStatus);
+router.post('/password/forgotpassword', signupController.forgotPasswordController);
+router.get('/password/resetpassword/:uuid', signupController.resetPasswordController);
+router.get('/password/updatepassword/:uuid2', signupController.updatePasswordController);
 module.exports = router;
