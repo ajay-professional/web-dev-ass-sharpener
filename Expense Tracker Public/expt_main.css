@@ -72,8 +72,7 @@ button {
     text-align: center;
     display: block;
     width: 100%;
-    height: 550px;
-    border: 1px black solid;
+    height: 100%;
     padding-top: 50px;
 }
 
@@ -96,6 +95,27 @@ button {
    display:none;
    border:1px solid black;
 }
+
+.noticeofmonths-class{
+   position: relative;
+   top:-180px;
+   left:380px;
+   width:450px;
+   height:150px;
+   background-color:rgb(191, 185, 185);
+   z-index:1;
+   text-align: center;
+   padding-top:15px;
+   padding-right: 30px;
+   padding-left: 30px;
+   padding-bottom:15px;
+   display:none;
+   border:1px solid black;
+   border-radius: 15px;
+}
+.noticeofmonths-class.nom-active{
+    display: flex;
+}
 #pwdForm{
     position: relative;
     left:105px;
@@ -106,7 +126,7 @@ button {
 
 #myform{
     position:relative;
-    top:30px;
+    top:20px;
     display:inline-flexbox;
 }
 #detailsOnScreen{

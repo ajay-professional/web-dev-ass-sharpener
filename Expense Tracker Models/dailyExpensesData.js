@@ -22,6 +22,12 @@ const dailyExpenses = sequelize.define('dailyExpenses', {
         type: Sequelize.STRING,
         // allowNull: false
     },
+    dateOfExpense:{
+        type: Sequelize.DATEONLY,
+    },
+    monthName:{
+        type: Sequelize.STRING,
+    },
     signupEmail:{
         type: Sequelize.STRING,
         allowNull:false

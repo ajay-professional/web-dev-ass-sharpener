@@ -12,8 +12,11 @@ router.get('/domTotalExpenses', signupController.authenticateUser, signupControl
 router.delete('/deleteExpenseFromDatabase/:dat', signupController.authenticateUser, signupController.deleteExpense);
 router.get('/purchase/premiummembership', signupController.authenticateUser, razorpayController.purchasepremium);
 router.get('/leaderboardUserExpenses', signupController.authenticateUser, signupController.leaderboardUserExpenses);
+router.get('/monthlyUserExpenses', signupController.authenticateUser, signupController.monthlyUserExpenses);
+router.get('/leaderboardMonthlyExpenses', signupController.authenticateUser, signupController.leaderboardMonthlyExpenses);
 router.post('/purchase/updatetransactionstatus', signupController.authenticateUser, razorpayController.updateTransactionStatus);
 router.post('/password/forgotpassword', signupController.forgotPasswordController);
 router.get('/password/resetpassword/:uuid', signupController.resetPasswordController);
 router.get('/password/updatepassword/:uuid2', signupController.updatePasswordController);
+router.post('/monthlyExpenseData', signupController.authenticateUser, signupController.monthlyExpenseData);
 module.exports = router;

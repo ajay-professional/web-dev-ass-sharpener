@@ -1,9 +1,11 @@
 const SignUp = require('../Expense Tracker Models/signupData.js');
 const DailyExpenses = require('../Expense Tracker Models/dailyExpensesData.js');
 const totalExpenseData = require('../Expense Tracker Models/totalExpenseData.js');
+const monthlyExpenseData = require('../Expense Tracker Models/monthlyExpenseData.js');
 const forgotPasswordRequests = require('../Expense Tracker Models/forgotPasswordRequests.js');
 let mymail;
 let myusername;
+let monthNam;
 let dotenv = require('dotenv');
 dotenv.config();
 const uuid = require('uuid');
@@ -75,12 +77,17 @@ exports.dailyExpensesData = (req, res, next) => {
     const expenseAmount = req.body.expenseAmount;
     const description = req.body.description;
     const categoryDetail = req.body.categoryDetail;
+    const dateOfExpense = req.body.dateOfExpense;
     const finalTotalExpense = req.body.finalTotalExpense;
+    const finalMonthlyExpense = req.body.finalMonthlyExpense;
+    const monthName = req.body.monthName;
     console.log(finalTotalExpense);
     DailyExpenses.create({
         expenseAmount,
         description,
         categoryDetail,
+        dateOfExpense,
+        monthName,
         signupEmail: mymail
     }).then((response) => {
         console.log(response);
@@ -95,6 +102,8 @@ exports.dailyExpensesData = (req, res, next) => {
             totalExpenseData.create({
                 username: myusername,
                 totalexpense: finalTotalExpense,
+                finalMonthlyExpense: finalMonthlyExpense,
+                monthName: monthName,
                 signupEmail: mymail
             }).then(result => {
                 console.log(result);
@@ -147,9 +156,44 @@ exports.domTotalExpenses = (req, res, next) => {
     });
 };
 
+exports.monthlyExpenseData = (req, res, next) => {
+    const finalMonthlyExpense = req.body.finalMonthlyExpense;
+    const monthName = req.body.monthName;
+    const yearDigit = req.body.yearDigit;
+    monthlyExpenseData.create({
+        username: myusername,
+        finalMonthlyExpense,
+        monthName,
+        yearDigit,
+        signupEmail: mymail
+    }).then(monthlyExpense => {
+        console.log(monthlyExpense);
+        res.json(monthlyExpense);
+    }).catch(err => {
+        console.log(err);
+    });
+};
+
 exports.leaderboardUserExpenses = (req, res, next) => {
     totalExpenseData.findAll().then(totalExpense => {
         res.json(totalExpense);
+    }).catch(err => {
+        console.log(err);
+    });
+};
+
+exports.monthlyUserExpenses = (req, res, next) => {
+    monthlyExpenseData.findAll({ where: { signupEmail: mymail } }).then(totalExpense => {
+        res.send(totalExpense);
+    }).catch(err => {
+        console.log(err);
+    });
+};
+
+exports.leaderboardMonthlyExpenses = (req, res, next) => {
+    totalExpenseData.findAll({ where: { monthName: monthNam } }).then(monthlyExpense => {
+        console.log(monthlyExpense);
+        res.json(monthlyExpense);
     }).catch(err => {
         console.log(err);
     });
@@ -168,20 +212,20 @@ exports.forgotPasswordController = (req, res, next) => {
             console.log("before sendgrid");
             sgMail.setApiKey(sg_API_KEY);
             console.log("after sendgrid");
-            const msgs={
+            const msgs = {
                 to: 'aycompany@gmail.com',
                 from: {
                     name: 'EXPENSES TRACKER',
-                    email:'akx4nine9@gmail.com',
+                    email: 'akx4nine9@gmail.com',
                 },
                 subject: 'Hello from Expenses Tracker-made by Ajay Kumar',
                 text: 'Reset your password by clicking on below link',
                 html: `<a href="http://localhost:5739/password/resetpassword/${uuidYours}">Reset password</a>`,
             };
-            sgMail.send(msgs).then((response)=>{
+            sgMail.send(msgs).then((response) => {
                 console.log('Email sent.....');
                 res.status(201).send("Reset password link sent...");
-            }).catch((err)=>{
+            }).catch((err) => {
                 console.log(err);
                 console.log("password link not sent...Internal server error");
                 res.status(500).send("password link not sent...");
@@ -199,10 +243,10 @@ exports.forgotPasswordController = (req, res, next) => {
 }
 
 exports.resetPasswordController = (req, res, next) => {
-    const uuid =  req.params.uuid;
-    forgotPasswordRequests.findOne({ where : { id: uuid }}).then(forgotpasswordrequest => {
-            forgotpasswordrequest.update({ isactive: false});
-            res.status(200).send(`<html>
+    const uuid = req.params.uuid;
+    forgotPasswordRequests.findOne({ where: { id: uuid } }).then(forgotpasswordrequest => {
+        forgotpasswordrequest.update({ isactive: false });
+        res.status(200).send(`<html>
                                     <script>
                                         function formsubmitted(e){
                                             e.preventDefault();
@@ -215,47 +259,47 @@ exports.resetPasswordController = (req, res, next) => {
                                         <button>reset password</button>
                                     </form>
                                 </html>`
-                                );
-        }).catch(err=>{
-            console.log(err);
-            console.log("Error in resetting the password");
-        });
+        );
+    }).catch(err => {
+        console.log(err);
+        console.log("Error in resetting the password");
+    });
 };
 
 exports.updatePasswordController = (req, res) => {
-        const uuid2 =  req.params.uuid2;
-        const { newpassword } = req.query;
-        forgotPasswordRequests.findOne({ where : { id: uuid2}}).then(forgotpasswordrequest => {
-            SignUp.findOne({where: { email: forgotpasswordrequest.signupEmail}}).then(user => {
-                    const saltRounds2 = 10;
-                    bcrypt.genSalt(saltRounds2, function(err, salt) {
-                        if(err){
-                            console.log(err);
-                            throw new Error(err);
-                        }
-                        bcrypt.hash(newpassword, salt, function(err, hash) {
-                            if(err){
-                                console.log(err);
-                                throw new Error(err);
-                            }
-                            user.update({ password: hash }).then(() => {
-                                res.status(201).send('<h2>Successfuly update the new password</h2>');
-                            }).catch(err=>{
-                                console.log('hash error');
-                                console.log(err);
-                            });
-                        });
-                    });
-                }).catch(err=> {
-                    res.status(404).json({ error: 'No user Exists', success: false});
-                    console.log("404--no user exists");
+    const uuid2 = req.params.uuid2;
+    const { newpassword } = req.query;
+    forgotPasswordRequests.findOne({ where: { id: uuid2 } }).then(forgotpasswordrequest => {
+        SignUp.findOne({ where: { email: forgotpasswordrequest.signupEmail } }).then(user => {
+            const saltRounds2 = 10;
+            bcrypt.genSalt(saltRounds2, function (err, salt) {
+                if (err) {
                     console.log(err);
+                    throw new Error(err);
+                }
+                bcrypt.hash(newpassword, salt, function (err, hash) {
+                    if (err) {
+                        console.log(err);
+                        throw new Error(err);
+                    }
+                    user.update({ password: hash }).then(() => {
+                        res.status(201).send('<h2>Successfuly update the new password</h2>');
+                    }).catch(err => {
+                        console.log('hash error');
+                        console.log(err);
+                    });
                 });
-            }).catch(err=>{
-                console.log(err);
-                console.log("403---not permitted---forbidden");
-                res.status(403).json({ error, success: false } );
-            }); 
+            });
+        }).catch(err => {
+            res.status(404).json({ error: 'No user Exists', success: false });
+            console.log("404--no user exists");
+            console.log(err);
+        });
+    }).catch(err => {
+        console.log(err);
+        console.log("403---not permitted---forbidden");
+        res.status(403).json({ error, success: false });
+    });
 };
 
 exports.deleteExpense = (req, res, next) => {
@@ -264,6 +308,8 @@ exports.deleteExpense = (req, res, next) => {
     const expenseid = parseFloat(arrDelVal[0]);
     console.log('id is :' + expenseid);
     const finalTotalExpense = parseFloat(arrDelVal[1]);
+    let finalMonthlyExpense = parseFloat(arrDelVal[2]);
+    let monthName = arrDelVal[3];
     DailyExpenses.destroy({
         where: {
             id: expenseid
@@ -279,6 +325,8 @@ exports.deleteExpense = (req, res, next) => {
             totalExpenseData.create({
                 username: myusername,
                 totalexpense: finalTotalExpense,
+                finalMonthlyExpense: finalMonthlyExpense,
+                monthName: monthName,
                 signupEmail: mymail
             }).then(result => {
                 console.log(result);
