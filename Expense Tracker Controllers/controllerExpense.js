@@ -13,6 +13,7 @@ const sgMail = require('@sendgrid/mail');
 const sg_API_KEY = 'SG.vCdmNcDD@mu32%z90kk312.wVJHNJbnm.?nk_u3hejn.6g3gy'; //This is a fake api I created to give a demo look
 var jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
+const ITEMS_PER_PAGE = 4;
 exports.addSignUpDetailsInDatabase = (req, res, next) => {
     const { username, email, phone, password } = req.body;
     const saltRounds = 10;
@@ -139,7 +140,7 @@ exports.authenticateUser = (req, res, next) => {
 };
 
 exports.domDailyExpenses = (req, res, next) => {
-    DailyExpenses.findAll({ where: { signupEmail: mymail } }).then(dailyExpense => {
+    DailyExpenses.findAll({where: { signupEmail: mymail } }).then(dailyExpense => {
         console.log(dailyExpense);
         res.json(dailyExpense);
     }).catch(err => {

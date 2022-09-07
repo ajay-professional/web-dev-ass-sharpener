@@ -10,6 +10,12 @@ const noticeOfMonths = document.getElementById('noticeofmonths-container');
 btnOfNot.addEventListener('click', () => {
     noticeOfMonths.classList.toggle('nom-active');
 });
+let page; let newArr;
+let ITEMS_PER_PAGE = 10;
+let parentNode = document.getElementById('div-id');
+let pageEle = document.getElementById('pagination');
+let childEle = document.createElement('div');
+let count=1;
 var forms = document.getElementById("myform");
 
 forms.addEventListener('submit', (e) => {
@@ -31,7 +37,7 @@ forms.addEventListener('submit', (e) => {
     console.log(finalTotalExpense);
     monthDigit = dateOfExpense.slice(5, 7);
     yearDigit = dateOfExpense.slice(0, 4);
-    if (document.getElementById('monthlyexp').value == "") {
+    if (document.getElementById('monthlyexp').value == "" || document.getElementById('monthlyexp').value == "₹0/-") {
         initialMonthlyExpense = 0;
         monthlyExpenseCheck = monthDigit;
     } else {
@@ -114,10 +120,20 @@ forms.addEventListener('submit', (e) => {
     console.log(obj3);
     axios.post('http://localhost:5739/dailyExpensesData', obj3, { headers: { "Authorization": token } }).then((response) => {
         console.log(response);
+        newArr = response.data;
         document.getElementById('totalexp').value = '₹' + `${finalTotalExpense}` + '/-';
         document.getElementById('monthlyexp').value = '₹' + `${finalMonthlyExpense}` + '/-';
         document.getElementById('monthTag').value = monthName;
-        printDetailsOnScreen(response.data);
+        axios.get("http://localhost:5739/domDailyExpenses", { headers: { "Authorization": token } }).then((response) => {
+            console.log(response);
+            newArr = response.data;
+            page = 1;
+            printOnScreen(newArr, ITEMS_PER_PAGE, page);
+            displayPagination(newArr, pageEle, ITEMS_PER_PAGE);
+        }).catch((err) =>{
+            console.log('Error in get request of domDailyExpenses');
+            console.log(err);
+        });
     }).catch((err) => {
         document.body.innerHTML = document.body.innerHTML + "<h4>Something went wrong</h4>";
         console.log(err);
@@ -128,9 +144,13 @@ window.addEventListener("DOMContentLoaded", () => {
     const token = sessionStorage.getItem('token');
     axios.get("http://localhost:5739/domDailyExpenses", { headers: { "Authorization": token } }).then((response) => {
         console.log(response);
-        for (var i = 0; i < response.data.length; i++) {
-            printDetailsOnScreen(response.data[i]);
-        }
+        newArr = response.data;
+        page = 1;
+        printOnScreen(newArr, ITEMS_PER_PAGE, page);
+        displayPagination(newArr, pageEle, ITEMS_PER_PAGE);
+        // for (var i = 0; i < response.data.length; i++) {
+        //     printDetailsOnScreen(response.data[i]);
+        // }
     }).catch((err) => console.log(err));
 
     axios.get("http://localhost:5739/domTotalExpenses", { headers: { "Authorization": token } }).then((response) => {
@@ -142,6 +162,19 @@ window.addEventListener("DOMContentLoaded", () => {
     }).catch((err) => console.log(err));
 });
 
+function printOnScreen(newArr, ITEMS_PER_PAGE, page) {
+    parentNode.innerHTML="";
+    count=(page*10)-9;
+    let start = ITEMS_PER_PAGE * (page - 1);
+    console.log(start);
+    let end = start + ITEMS_PER_PAGE;
+    console.log(end);
+    let paginatedExpense = newArr.slice(start, end);
+    console.log(paginatedExpense);
+    for (let i = 0; i < paginatedExpense.length; i++) {
+        printDetailsOnScreen(paginatedExpense[i]);
+    };
+};
 function printDetailsOnScreen(det) {
     if (det.description.indexOf(" ") != -1) {
         newDesc = det.description.replaceAll(" ", "#");
@@ -154,8 +187,8 @@ function printDetailsOnScreen(det) {
     yourMonth = yourDateOfExpense.slice(4, 7);
     
     console.log((document.getElementById('monthTag').value).slice(0, 3));
-    let parentNode = document.getElementById('div-id');
-    parentNode.innerHTML = parentNode.innerHTML + `<li id='${det.id}-${det.expenseAmount}-${yourMonth}' style="text-align:left;"><pre style="font-size:15px;"><b>On:</b> <i>${yourDateOfExpense}</i>,     <b>Amount:</b> <i>₹${det.expenseAmount}/-</i>,     <b>Description:</b><i style="position:relative;width:15px;height:2px;">${det.description}</i>,     <b>Category:</b><i>${det.categoryDetail}</i>     <button id="del" onclick=deleteUser('${det.id}-${det.expenseAmount}-${yourMonth}') style="background-color:blue; border:1px black solid; border-radius:5px;color:white;">Delete expense</button>  <button id="edit" onclick=editUserDetails('${det.expenseAmount}','${det.description}','${det.categoryDetail}','${det.id}-${det.expenseAmount}') style="background-color:blue; border:1px black solid; border-radius:5px;color:white;">Edit expense</button>.</pre></li>`
+    parentNode.innerHTML = parentNode.innerHTML + `<span id='${det.id}-${det.expenseAmount}-${yourMonth}' style="text-align:left;"><pre style="font-size:15px;"><b>${count}.</b>   <b>On:</b> <i>${yourDateOfExpense}</i>,     <b>Amount:</b> <i>₹${det.expenseAmount}/-</i>,     <b>Description:</b><i style="position:relative;width:15px;height:2px;">${det.description}</i>,     <b>Category:</b><i>${det.categoryDetail}</i>     <button id="del" onclick=deleteUser('${det.id}-${det.expenseAmount}-${yourMonth}') style="background-color:blue; border:1px black solid; border-radius:5px;color:white;">Delete expense</button>  <button id="edit" onclick=editUserDetails('${det.expenseAmount}','${det.description}','${det.categoryDetail}','${det.id}-${det.expenseAmount}') style="background-color:blue; border:1px black solid; border-radius:5px;color:white;">Edit expense</button>.</pre></span>`
+    count=count+1;
 }
 function editUserDetails(eval, dval, cvalue, ivalue) {
     document.getElementById('number').value = eval;
@@ -200,6 +233,32 @@ function removeFromScreen(ivalue) {
     let parentNode = document.getElementById('div-id');
     let childnode = document.getElementById(ivalue);
     parentNode.removeChild(childnode);
+}
+
+function displayPagination(newArr, pageEle, ITEMS_PER_PAGE) {
+    pageEle.innerHTML="";
+    let page_count = Math.ceil(newArr.length / ITEMS_PER_PAGE);
+    for (let i = 1; i < page_count + 1; i++) {
+        let btn = createPageBtn(i, newArr);
+        pageEle.appendChild(btn);
+    };
+}
+
+function createPageBtn(pages, newArr) {
+    let btnEle = document.createElement('button');
+    btnEle.innerText = pages;
+    if (page == pages) {
+        btnEle.classList.add('activ');
+    }
+    btnEle.classList.add('btnPage');
+    btnEle.addEventListener('click', function () {
+        page=parseFloat(btnEle.innerText);
+        let current_btn = document.getElementsByClassName('activ');
+        current_btn[0].classList.remove('activ');
+        btnEle.classList.add('activ');
+        printOnScreen(newArr, ITEMS_PER_PAGE, page);
+    });
+    return btnEle;
 }
 function clearDetails() {
     document.getElementById('number').value = " ";
