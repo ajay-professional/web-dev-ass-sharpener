@@ -11,7 +11,8 @@ btnOfNot.addEventListener('click', () => {
     noticeOfMonths.classList.toggle('nom-active');
 });
 let page; let newArr;
-let ITEMS_PER_PAGE = 10;
+let rows_per_page;
+let ITEMS_PER_PAGE=10;
 let parentNode = document.getElementById('div-id');
 let pageEle = document.getElementById('pagination');
 let childEle = document.createElement('div');
@@ -146,11 +147,13 @@ window.addEventListener("DOMContentLoaded", () => {
         console.log(response);
         newArr = response.data;
         page = 1;
+        document.getElementById('rowsNo').value=localStorage.getItem('itemsPerPage');
+        ITEMS_PER_PAGE=parseFloat(localStorage.getItem('itemsPerPage'));
+        monthDigit=newArr[newArr.length-1].dateOfExpense.slice(5, 7);
+        yearDigit=newArr[newArr.length-1].dateOfExpense.slice(0, 4);
+        monthlyExpenseCheck = monthDigit;
         printOnScreen(newArr, ITEMS_PER_PAGE, page);
         displayPagination(newArr, pageEle, ITEMS_PER_PAGE);
-        // for (var i = 0; i < response.data.length; i++) {
-        //     printDetailsOnScreen(response.data[i]);
-        // }
     }).catch((err) => console.log(err));
 
     axios.get("http://localhost:5739/domTotalExpenses", { headers: { "Authorization": token } }).then((response) => {
@@ -159,12 +162,22 @@ window.addEventListener("DOMContentLoaded", () => {
         document.getElementById('totalexp').value = '₹' + `${response.data[0].totalexpense}` + '/-';
         document.getElementById('monthlyexp').value = '₹' + `${response.data[0].finalMonthlyExpense}` + '/-';
         document.getElementById('monthTag').value = response.data[0].monthName;
+        finalMonthlyExpense=response.data[0].finalMonthlyExpense;
+        monthName=response.data[0].monthName;
     }).catch((err) => console.log(err));
 });
 
 function printOnScreen(newArr, ITEMS_PER_PAGE, page) {
     parentNode.innerHTML="";
-    count=(page*10)-9;
+    if(ITEMS_PER_PAGE==5){
+        count=(page*5)-4;
+    }else if(ITEMS_PER_PAGE==10){
+      count=(page*10)-9;
+    }else if(ITEMS_PER_PAGE==15){
+        count=(page*15)-14; 
+    }else{
+        count=(page*20)-19;
+    }
     let start = ITEMS_PER_PAGE * (page - 1);
     console.log(start);
     let end = start + ITEMS_PER_PAGE;
@@ -265,6 +278,12 @@ function clearDetails() {
     document.getElementById('text').value = " ";
     document.getElementById('list').value = " ";
 }
+document.getElementById('subRowsNo').addEventListener('click', ()=>{
+    rows_per_page=document.getElementById('rowsNo').value;
+    localStorage.setItem('itemsPerPage', rows_per_page);
+    ITEMS_PER_PAGE=parseFloat(rows_per_page);
+    location.reload();
+});
 
 
 

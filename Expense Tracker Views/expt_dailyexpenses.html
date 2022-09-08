@@ -15,23 +15,32 @@
     <nav class="navbar navbar-dark bg-dark">
         <ul class="nav justify-content-end">
             <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="C:\Users\gulshan\Desktop\Expense Tracker Views\expt_home.html">Home</a>
+                <a class="nav-link active" aria-current="page"
+                    href="C:\Users\gulshan\Desktop\Expense Tracker Views\expt_home.html">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#"  style="color:white;">Your Expenses</a>
+                <a class="nav-link" href="#" style="color:white;">Your Expenses</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="C:\Users\gulshan\Desktop\Expense Tracker Views\expt_my_expenses_report_simple.html">My Expenses Report</a>
+                <a class="nav-link"
+                    href="C:\Users\gulshan\Desktop\Expense Tracker Views\expt_my_expenses_report_simple.html">My
+                    Expenses Report</a>
             </li>
             <li class="nav-item">
-                <button id="logoutFrom" style="background-color:blue; border:1px black solid; border-radius:5px;color:white;">LOG OUT</button>
+                <button id="logoutFrom"
+                    style="background-color:blue; border:1px black solid; border-radius:5px;color:white;">LOG
+                    OUT</button>
             </li>
         </ul>
-        <button id="buypremium" style="background-color:blue; border:1px black solid; border-radius:5px;color:white;margin-left:320px;">Buy Premium Membership?</button>
+        <button id="buypremium"
+            style="background-color:blue; border:1px black solid; border-radius:5px;color:white;margin-left:320px;">Buy
+            Premium Membership?</button>
         <h2 style="color:blue;padding-right:10px;">Expense Tracker</h2>
     </nav>
     <div id="dailyexpenses-id-container" class="dailyexpenses-class">
-        <h1 style="text-align:center;font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; margin-top: -40px;">Daily Expenses</h1>
+        <h1
+            style="text-align:center;font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; margin-top: -40px;">
+            Daily Expenses</h1>
         <form id="myform" action="" method="POST">
             <fieldset>
                 <label for="thedate">
@@ -81,20 +90,48 @@
                     <option value="Lending">
                     <option value="Maintenance">
                     <option value="Others">
-                </datalist><br/>
-                <input type="submit" id="btn" name="Add expenses" value="Add Expenses" style="width: 110px;margin-right: 10px;margin-top:15px;color:white;background-color:blue;border:1px white solid;border-radius:5px;">
-                <input type="reset" id="reset" name="Reset" value="Reset" style="width: 110px;margin-left: 20px;margin-top:15px;color:white;background-color:blue;border:1px white solid;border-radius:5px;" title="clear all values">
+                </datalist><br />
+                <input type="submit" id="btn" name="Add expenses" value="Add Expenses"
+                    style="width: 110px;margin-right: 10px;margin-top:15px;color:white;background-color:blue;border:1px white solid;border-radius:5px;">
+                <input type="reset" id="reset" name="Reset" value="Reset"
+                    style="width: 110px;margin-left: 20px;margin-top:15px;color:white;background-color:blue;border:1px white solid;border-radius:5px;"
+                    title="clear all values">
             </fieldset>
         </form>
         <div id="detailsOnScreen">
-            <h5 style="text-align: left;margin-left:15px;font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;"><pre><ins>Day to Day Expenses:-</ins>                   <span><label for="totalexp">Your Yearly Expenses:</label><input type="text" id="totalexp" name="TotalExpenses" size="10" readonly></span>        <span><label for="monthlyexp">Your Monthly Expenses:</label><small><small><small><button id="noticeofmonths" style="border-radius:100%;background-color: blue;color:white;border:1px solid white;">?</button></small></small></small><input type="text" id="monthlyexp" name="MonthlyExpenses" size="10" readonly><input type="text" id="monthTag" name="monthTag" size="10" readonly></span></pre></h5> 
+            <h5
+                style="text-align: left;margin-left:15px;font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
+                <pre><ins>Day to Day Expenses:-</ins>                   <span><label for="totalexp">Your Yearly Expenses:</label><input type="text" id="totalexp" name="TotalExpenses" size="10" readonly></span>        <span><label for="monthlyexp">Your Monthly Expenses:</label><small><small><small><button id="noticeofmonths" style="border-radius:100%;background-color: blue;color:white;border:1px solid white;">?</button></small></small></small><input type="text" id="monthlyexp" name="MonthlyExpenses" size="10" readonly><input type="text" id="monthTag" name="monthTag" size="10" readonly></span></pre>
+            </h5>
             <ol>
                 <div id="div-id" class="div-class"></div>
             </ol>
         </div>
+        <div style="position:relative;top:130px;margin-left:0px;z-index: 1;">
+                <label for="rowsNo"
+                    style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;font-size:18px;">Rows
+                    per page:</label>
+                <select id="rowsNo" name="rowsNo">
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="15">15</option>
+                    <option value="20">20</option>
+                </select>
+                <input type="submit" id="subRowsNo" title="Do not forget to save rows per page value. Press on save button to save." style="width:40px;height:30px;padding-left:2px;color:white;background-color: rgb(1, 70, 97);border-color: white;border-radius: 7px;" value="save">
+        </div>
+        <div class="pagenumbers" id="pagination"
+            style="position:relative;margin-top:50px;margin-left:-5px;font-size:25px;">
+
+        </div>
         <div id="noticeofmonths-container" class="noticeofmonths-class">
             <h6 style="color:blue;"><b><i>Note:</i></b></h6>
-            </br><p style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;"><i>Please move to the next month expenses, only if, you have successfully entered all the expenses of previous months as after moving to next month all the previous months data would get saved and you can't edit it.</i></p>
+            </br>
+            <p
+                style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
+                <i>Please move to the next month expenses, only if, you have successfully entered all the expenses of
+                    previous months as after moving to next month all the previous months data would get saved and you
+                    can't edit it.</i>
+            </p>
         </div>
         <div id="dailyexpensesnotice">
 
@@ -104,4 +141,5 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"></script>
     <script src="../Expense Tracker Public/expt_dailyexpenses.js"></script>
 </body>
+
 </html>
