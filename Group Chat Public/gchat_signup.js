@@ -11,6 +11,8 @@ loginbtn.addEventListener('click', () => {
 });
 
 
+
+
 const formSignup = document.getElementById('signUpForm');
 formSignup.addEventListener('submit', (e) => {
     e.preventDefault();
