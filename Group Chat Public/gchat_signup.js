@@ -12,6 +12,7 @@ loginbtn.addEventListener('click', () => {
 const formSignup = document.getElementById('signUpForm');
 
 
+
 formSignup.addEventListener('submit', (e) => {
     e.preventDefault();
     const username = e.target.username.value;
