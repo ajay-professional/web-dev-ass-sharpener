@@ -27,11 +27,11 @@ formSignup.addEventListener('submit', (e) => {
     }
     
     axios.post('http://localhost:5040/addSignUpDetailsInDatabase', obj).then((response) => {
-        console.log(response);
+        console.log(response.data.status);
         console.log('Successfully added signup details');
         let parEle = document.getElementById('signupnotice');
         let childEle = document.createElement('p');
-        childEle.innerHTML = '<h3 style="color:green;"><i><ins>Successfully added signup details. Loading to login page....</ins></i></h3>';
+        childEle.innerHTML = `<h3 style="color:green;"><i><ins>${response.data.status}</ins></i></h3>`;
         parEle.appendChild(childEle);
         setTimeout(() => {
             childEle.remove();
