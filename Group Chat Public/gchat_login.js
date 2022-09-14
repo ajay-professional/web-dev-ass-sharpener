@@ -39,7 +39,7 @@ formLogin.addEventListener('submit', (e) => {
         parEle.appendChild(childEle);
         setTimeout(() => {
             childEle.remove();
-              window.location.href = "";
+              window.location.href = "file:///C:/Users/gulshan/Desktop/Group%20Chat%20Views/gchat_home.html";
             }, 3000);
     }).catch(err => {
         console.log(err);
