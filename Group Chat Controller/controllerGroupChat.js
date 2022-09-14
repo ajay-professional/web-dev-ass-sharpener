@@ -1,4 +1,5 @@
 const SignUp = require('../Group Chat Models/signupData.js');
+const groupChatMsgs=require('../Group Chat Models/groupChatMsgs.js');
 let dotenv = require('dotenv');
 dotenv.config();
 const bcrypt = require('bcrypt');
@@ -73,4 +74,18 @@ exports.authenticateUser = (req, res, next) => {
         console.log(err);
         return res.status(401).json({ success: false })
     }
+};
+
+exports.groupChatMessage = (req, res, next) => {
+    const msgs = req.body.msgs;
+    groupChatMsgs.create({
+        msgs:msgs,
+        username: myusername,
+        signupEmail: mymail
+    }).then(groupChatMsgs => {
+        console.log(groupChatMsgs);
+        res.json(groupChatMsgs);
+    }).catch(err => {
+        console.log(err);
+    });
 };
