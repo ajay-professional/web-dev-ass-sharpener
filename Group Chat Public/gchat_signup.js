@@ -26,7 +26,7 @@ formSignup.addEventListener('submit', (e) => {
         password
     }
     
-    axios.post('http://localhost:5739/addSignUpDetailsInDatabase', obj).then((response) => {
+    axios.post('http://localhost:5040/addSignUpDetailsInDatabase', obj).then((response) => {
         console.log(response);
         console.log('Successfully added signup details');
         let parEle = document.getElementById('signupnotice');
