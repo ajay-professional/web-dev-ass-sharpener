@@ -9,10 +9,6 @@ const logincont = document.getElementById('login-id-container');
 loginbtn.addEventListener('click', () => {
     window.location.replace("file:///C:/Users/gulshan/Desktop/Group%20Chat%20Views/gchat_login.html");
 });
-
-
-
-
 const formSignup = document.getElementById('signUpForm');
 formSignup.addEventListener('submit', (e) => {
     e.preventDefault();
