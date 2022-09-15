@@ -144,7 +144,11 @@ button {
 .forgotPwd-cls.pwd-active {
     display: flex;
 }
-
+#logoutFrom{
+    position:fixed;
+    top:20px;
+    left:1180px;
+}
 
 
 #myform {

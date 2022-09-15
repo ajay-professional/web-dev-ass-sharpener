@@ -89,3 +89,29 @@ exports.groupChatMessage = (req, res, next) => {
         console.log(err);
     });
 };
+
+exports.domChatMessage=(req, res, next)=>{
+    groupChatMsgs.findAll({ where: { signupEmail: mymail } }).then(groupChatM=> {
+        res.send(groupChatM);
+    }).catch(err => {
+        console.log(err);
+    });
+};
+
+exports.domAllChatMessages=(req, res, next)=>{
+    groupChatMsgs.findAll().then(groupChatM => {
+        console.log(groupChatM);
+        res.json(groupChatM);
+    }).catch(err => {
+        console.log(err);
+    });
+};
+
+exports.domValidateEmailId=(req, res, next)=>{
+    groupChatMsgs.findAll().then(groupChatM => {
+        console.log(groupChatM);
+        res.json({usermail:`${mymail}`});
+    }).catch(err => {
+        console.log(err);
+    });
+};
